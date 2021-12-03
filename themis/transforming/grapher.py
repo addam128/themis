@@ -26,7 +26,7 @@ class Grapher:
     def _create_tree(self) -> None:
         last_node = "entry"
         for call, action in self._parser.parse():
-            print(call)
+
             self._graph.add_node(str(call.id), call=call)
             self._graph.add_edge(last_node, str(call.id), type=EdgeType.TIME)
             last_node = str(call.id)
