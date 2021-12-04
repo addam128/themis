@@ -2,7 +2,7 @@ lib_dir = "/opt/libs/"
 bin_dir = "/opt/binaries/"
 data_dir = "./themis/data/"
 traced_libcalls_file = "./themis/trace_conf/libc_i_o.txt"
-executable = "ssh"
+executable = "ssh-7.9"
 args = [
     "ptolemy@172.16.0.10",
     "sleep 5 & uname -a & sleep 5 & uname -a"
