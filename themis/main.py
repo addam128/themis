@@ -12,7 +12,7 @@ from themis.transforming.transform import transform, reconstruct, to_img
 def parse_args():
 
     parser = argparse.ArgumentParser("themis")
-    parser.add_argument("--module", type=str, choices=["trace", "transform", "compare", "all"], help="functionality to invoke")
+    parser.add_argument("--module", type=str, choices=["trace", "transform", "compare", "all"], help="functionality to invoke", required=True)
     parser.add_argument("--conf", type=str, default="./themis/config.toml", help="set different config file")
     
     return parser.parse_args()
