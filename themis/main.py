@@ -13,7 +13,7 @@ from themis.comparing.compare import compare
 def parse_args():
 
     parser = argparse.ArgumentParser("themis")
-    parser.add_argument("--module", type=str, choices=["trace", "transform", "compare", "all"], help="functionality to invoke")
+    parser.add_argument("--module", type=str, choices=["trace", "transform", "compare", "all"], help="functionality to invoke", required=True)
     parser.add_argument("--conf", type=str, default="./themis/config.toml", help="set different config file")
     parser.add_argument("--show", default=False, help="save graphs ass png", action="store_true")
     
@@ -43,6 +43,8 @@ def main():
 
     if module == "transform" or module == "all":
         graph = transform(config)
+        to_img(config, graph)
+
 
     if module == "compare" or module == "all":
         if graph is None:
