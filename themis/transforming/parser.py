@@ -4,7 +4,7 @@ from typing import Generator, Optional, List, Any, Tuple, Union, Dict
 from dataclasses import dataclass, field
 from uuid import uuid4, UUID
 
-from themis.transforming.calls import CallsNode, IODescAndState, IOConstructType, IODesc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, CLOSERS
+from themis.transforming.calls import CallsNode, IODescAndState, IOConstructType, IODesc, IODescFunc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, Function,CLOSERS
 
 
 CALL_REGEX = re.compile(r"(?P<offset>\s+)(?:\|\s+)?(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.]+)\)")
@@ -78,15 +78,17 @@ class CallParser:
         in_fd = self._get_in_fd(arg_dict, func)
         out_fd = self._get_out_fd(arg_dict, func)
 
+        func_obj = self._create_function(func)
+
         if callpoint is None:
-            return CallsNode(call=IOCall(index, func, in_fd, out_fd, arg_dict))
+            return CallsNode(call=IOCall(index, func_obj, in_fd, out_fd, arg_dict))
 
         mat = CALLPOINT_REGEX.match(callpoint)
         c_type = mat.group("type")
         c_id = mat.group("id")
 
         if c_type == "enter":
-            call = CallsNode(call=IOCall(index, func, in_fd, out_fd, arg_dict))
+            call = CallsNode(call=IOCall(index, func_obj, in_fd, out_fd, arg_dict))
             self._open_iocall[int(c_id)] = call
             return call.id
         if c_type == "exit":
@@ -139,6 +141,8 @@ class CallParser:
                 if same_fd is not None and same_fd.state == IODescState.FORGOTTEN:
                     print(f"function {func} returned forgotten fd {value}")
 
+                # TODO: if fd is 0x00, check if the function was fopen, as that would mean null, not fd(0x00)
+
                 new_iodesc.append(IODesc(typ=IOConstructType.UNKNOWN, fd=int(value, base=16)))
 
         for iodesc in new_iodesc:
@@ -171,6 +175,9 @@ class CallParser:
         # TODO: fopen -> add internal fd to stream
 
         return ret_func
+
+    def _create_function(self, func: str):
+        return Function(funcname=func, effect=IODescFunc.NONE) # TODO: proper effect
 
 
 def extract_uuid(node: Union[UUID, CallsNode]) -> str:

@@ -1,7 +1,8 @@
 import networkx as nx
 import matplotlib.pyplot as plt
+import os 
 
-from typing import List
+from typing import Generator, List, Any
 
 from themis.transforming.parser import CallParser
 from themis.transforming.grapher import Grapher, EdgeType
@@ -14,20 +15,29 @@ def transform(config: Config) -> nx.Graph:
         
         parser = CallParser(callfile)
         grapher = Grapher(parser)
-        graph, labels = grapher.into_graph()
+        graph = grapher.into_graph()
         persist(config, graph)
 
         return graph
 
-def reconstruct(config: Config):
-    graph = nx.nx_pydot.read_dot(path=f"{config.data_dir}/{config.executable}_graph.dot")
+
+def reconstruct_from_conf(config: Config) -> nx.DiGraph:
+    return reconstruct_one(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+
+def reconstruct_one(path: str) -> nx.DiGraph:
+    graph = nx.read_gpickle(path=path)
     return graph
+
+def reconstruct_all(config: Config) -> Generator[nx.DiGraph, Any, Any]:
+    with os.scandir(config.graph_dir) as graph_db:
+        for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".pickle"), graph_db):
+            yield reconstruct_one(pfile.path)
 
 
 def to_img(config: Config, graph: nx.Graph):
     labels = dict()
     for node in graph.nodes(data="call"):
-        labels[node[0]] = node[1].call.func
+        labels[node[0]] = node[1].call.func.funcname
     edge_colors = []
     for edge in graph.edges(data="type"):
         edge_colors.append("grey" if edge[2] == EdgeType.TIME else "green" if edge[2] == EdgeType.FOLLOW else "orange")
@@ -38,4 +48,4 @@ def to_img(config: Config, graph: nx.Graph):
 
 def persist(config: Config, graph: nx.Graph) -> None:
     
-    nx.nx_pydot.write_dot(graph, path=f"{config.data_dir}/{config.executable}_graph.dot")
+    nx.write_gpickle(graph, path=f"{config.graph_dir}/{config.executable}_graph.pickle")

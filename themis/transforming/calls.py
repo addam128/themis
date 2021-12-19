@@ -41,17 +41,22 @@ class IODescFunc(Enum):
     OPEN = auto()
     USE = auto()
     CLOSE = auto()
+    CHANGE = auto()
     NONE = auto()
+
+@dataclass
+class Function:
+    funcname: str
+    effect: IODescFunc
 
 
 @dataclass
 class IOCall:
     index: int = field(default=-1)  # order in input file
-    func: str = field(default="nop")
+    func: Function = field(default=Function("nop", IODescFunc.NONE))
     in_fd: Optional[IODesc] = field(default=None)
     out_fd: Optional[List[IODesc]] = field(default=None)
     args: Dict[str, Any] = field(default_factory=dict)
-    effect: IODescFunc = field(default=IODescFunc.NONE)
 
 
 @dataclass
@@ -68,7 +73,7 @@ class CallsNode:
         self.call.index = value
 
     @property
-    def func(self) -> str:
+    def func(self) -> Function:
         return self.call.func
 
     @property

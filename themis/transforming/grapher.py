@@ -3,7 +3,7 @@ import networkx as nx
 from enum import Enum, auto
 from typing import Tuple, List
 
-from themis.transforming.calls import CallsNode, GraphFunc, IOCall
+from themis.transforming.calls import CallsNode, Function, GraphFunc, IOCall, IODescFunc
 from themis.transforming.parser import CallParser
 
 
@@ -21,7 +21,7 @@ class Grapher:
         self._init_graph()
 
     def _init_graph(self):
-        self._graph.add_node("entry", call=CallsNode(call=IOCall(func="entry")))
+        self._graph.add_node("entry", call=CallsNode(call=IOCall(func=Function("entry", IODescFunc.NONE))))
 
     def _create_tree(self) -> None:
         last_node = "entry"
@@ -53,9 +53,5 @@ class Grapher:
         self._create_tree()
         self._add_nesting_edges()
 
-        labels = dict()
-        for node in self._graph.nodes(data="call"):
-            labels[node[0]] = node[1].call.func
-
-        return self._graph, labels
+        return self._graph
 
