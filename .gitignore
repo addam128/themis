@@ -136,6 +136,8 @@ dmypy.json
 *.gexf
 .vs/
 
+poetry.lock
+
 !__handlers__/
 !__handlers__/libc_2.31.so/
 !__handlers__/libpthread_2.31.so/
