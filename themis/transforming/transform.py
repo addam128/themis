@@ -17,6 +17,7 @@ def transform(config: Config) -> nx.Graph:
         grapher = Grapher(parser)
         graph = grapher.into_graph()
         persist(config, graph)
+        to_gexf(config, graph)
 
         return graph
 
@@ -47,5 +48,9 @@ def to_img(config: Config, graph: nx.Graph):
 
 
 def persist(config: Config, graph: nx.Graph) -> None:
-    
     nx.write_gpickle(graph, path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+
+
+def to_gexf(config: Config, graph: nx.Graph):
+    from themis.transforming.gexf import write_gexf
+    write_gexf(graph, path=f"{config.graph_dir}/{config.executable}.gexf")

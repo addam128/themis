@@ -4,8 +4,11 @@ from typing import Generator, Optional, List, Any, Tuple, Union, Dict
 from dataclasses import dataclass, field
 from uuid import uuid4, UUID
 
-from themis.transforming.calls import CallsNode, IODescAndState, IOConstructType, IODesc, IODescFunc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, Function,CLOSERS
-
+from themis.transforming.calls import CallsNode, IODescAndState, IOConstructType,\
+     IODesc, IODescFunc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, Function
+from themis.transforming.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MANIPULATORS,\
+     STREAM_MANIPULATORS, SOCKET_MANIPULATORS, PIPE_MANIPULATORS, FIFIO_MANIPULATORS,\
+          TMP_MANIPULATORS, LINK_MANIPULATORS, DIRECTORY_MANIPULATORS
 
 CALL_REGEX = re.compile(r"(?P<offset>\s+)(?:\|\s+)?(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.]+)\)")
 CALLPOINT_REGEX = re.compile(r"::(?P<type>\w+)<(?P<id>\d+)>")
@@ -18,19 +21,21 @@ class CallParser:
         self._edges: List[Tuple[str, str]] = list()
         self._last_of_level: Dict[int, str] = dict()  # int is offset
         self._open_iocall: Dict[int, CallsNode] = dict()  # int is identifier from frida
+        self._open_iocall_stack = list()
+        self._available_internal_fds = dict()
         self._iodesc: Dict[int, IODescAndState] = dict()
 
         self._iodesc[0x00] = IODescAndState(
             IODesc(typ=IOConstructType.STDIN, fd=0x00, desc="standard input, inherited"),
-            IODescState.OPEN
+            IODescState.UNKNOWN
         )
         self._iodesc[0x01] = IODescAndState(
             IODesc(typ=IOConstructType.STDOUT, fd=0x01, desc="standard output, inherited"),
-            IODescState.OPEN
+            IODescState.UNKNOWN
         )
         self._iodesc[0x02] = IODescAndState(
             IODesc(typ=IOConstructType.STDERR, fd=0x02, desc="standard error, inherited"),
-            IODescState.OPEN
+            IODescState.UNKNOWN
         )
 
     def parse(self) -> Generator[CallsNodeAndFunc, Any, Any]:
@@ -42,6 +47,8 @@ class CallParser:
                 offset, node = self._node_from_line(line)
                 if offset > previous_offset:
                     self._edges.append((self._last_of_level[previous_offset], extract_uuid(node)))
+                if isinstance(node, CallsNode) and  offset > 2 and node.func.funcname == "open":
+                    self._available_internal_fds[self._open_iocall_stack[-1]] = node.output_fd[0]         
 
                 previous_offset = offset
                 self._last_of_level[offset] = extract_uuid(node)
@@ -90,14 +97,18 @@ class CallParser:
         if c_type == "enter":
             call = CallsNode(call=IOCall(index, func_obj, in_fd, out_fd, arg_dict))
             self._open_iocall[int(c_id)] = call
+            self._open_iocall_stack.append(call.id)
             return call.id
         if c_type == "exit":
-            call = self._open_iocall.pop(int(c_id));
+            call = self._open_iocall.pop(int(c_id))
+            self._open_iocall_stack.remove(call.id)
             call.call.out_fd = out_fd
             call.index = index
-            return call
 
-        # TODO: internal fds, fd type deduction
+            if call.func.funcname == "fopen":
+                call.output_fd[0].internal = self._available_internal_fds.get(call.id, None)
+
+            return call
 
     def _parse_args(self, args: str) -> Dict[str, Any]:
         arg_dict = dict()
@@ -135,13 +146,14 @@ class CallParser:
                 if value is None:
                     print(f"Function {func} gives no file descriptor")
                     continue
+                if func == "fopen" and value == "0x00":
+                    print(f"fopen returned null")
+                    continue
                 same_fd = self._iodesc.get(int(value, base=16), None)
                 if same_fd is not None and same_fd.state == IODescState.OPEN:
                     print(f"function {func} returned already open fd {value}")
                 if same_fd is not None and same_fd.state == IODescState.FORGOTTEN:
                     print(f"function {func} returned forgotten fd {value}")
-
-                # TODO: if fd is 0x00, check if the function was fopen, as that would mean null, not fd(0x00)
 
                 new_iodesc.append(IODesc(typ=IOConstructType.UNKNOWN, fd=int(value, base=16)))
 
@@ -158,21 +170,42 @@ class CallParser:
 
     def _postprocess_node(self, node: CallsNode) -> GraphFunc:
         ret_func = None
-        if node.func in CLOSERS:
+        if node.func.funcname in CLOSERS:
             if node.input_fd.fd is not None:
                 handle = self._iodesc.get(node.input_fd.fd)
                 if handle is not None:
                     handle.state = IODescState.CLOSED
                 ret_func = GraphFunc.RESET_FD
 
-        if node.func == "fclose":
-            pass  # TODO : Forget internal fds
 
-        if node.func == "fcloseall":
+        if node.func.funcname == "fclose":
+            if node.input_fd.internal is not None:
+                self._iodesc[node.input_fd.internal.fd].state = IODescState.FORGOTTEN
+            
+        elif node.func.funcname == "fcloseall":
             ret_func = GraphFunc.RESET_STREAMS
-        # TODO: opening -> guess fd type
-        # TODO: dup -> inherit fd type
-        # TODO: fopen -> add internal fd to stream
+            # TODO: changeall streams to closed + internals
+
+        elif node.func.funcname == "dup" or node.func.funcname == "dup2":
+            for fd in node.output_fd:
+                fd.typ = node.input_fd.typ 
+
+        else:
+            # guess fd type by function
+            # prefer more precise (like tmp over stream)
+            # anything over binary file
+            
+            # IN FD
+            if node.input_fd is not None:
+                new_guess = guess_io_type(node.input_fd.typ, node.func)
+                node.input_fd.typ = new_guess
+
+            # OUT FD
+            if node.output_fd is not None:
+                for fd in node.output_fd:
+                    new_guess = guess_io_type(fd.typ, node.func)
+                    fd.typ = new_guess
+
 
         return ret_func
 
@@ -184,3 +217,29 @@ def extract_uuid(node: Union[UUID, CallsNode]) -> str:
     if isinstance(node, CallsNode):
         return str(node.id)
     return str(node)
+
+def guess_io_type(old_guess: IOConstructType, func: Function):
+    new_guess = IOConstructType.UNKNOWN
+
+    if func.funcname in SOCKET_MANIPULATORS:
+        new_guess =  IOConstructType.SOCKET
+    elif func.funcname in MEMORY_MANIPULATORS:
+        new_guess = IOConstructType.MEMORY
+    elif func.funcname in DIRECTORY_MANIPULATORS:
+        new_guess = IOConstructType.DIRECTORY
+    elif func.funcname in LINK_MANIPULATORS:
+        new_guess = IOConstructType.LINK
+    elif func.funcname in TMP_MANIPULATORS:
+        new_guess = IOConstructType.TMP
+    elif func.funcname in PIPE_MANIPULATORS:
+        new_guess = IOConstructType.PIPE
+    elif func.funcname in FIFIO_MANIPULATORS:
+        new_guess = IOConstructType.FIFO
+    elif func.funcname in STREAM_MANIPULATORS:
+        new_guess = IOConstructType.STREAM
+    elif func.funcname in BINFILE_MANIPULATORS:
+        new_guess = IOConstructType.BINFILE
+
+    return new_guess if new_guess > old_guess else old_guess
+
+    

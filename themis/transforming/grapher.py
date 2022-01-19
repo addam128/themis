@@ -42,6 +42,8 @@ class Grapher:
                 continue
             if action == GraphFunc.RESET_FD:
                 self._i_o_descriptors[call.input_fd.fd] = "entry"
+                if call.input_fd.internal is not None:
+                    self._i_o_descriptors[call.input_fd.internal.fd] = "entry"
             if action == GraphFunc.RESET_STREAMS:
                 pass  # TODO
 

@@ -1,4 +1,5 @@
 fopen
+freopen
 fclose
 fcloseall
 fputc

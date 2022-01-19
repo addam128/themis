@@ -43,7 +43,6 @@ def main():
 
     if module == "transform" or module == "all":
         graph = transform(config)
-        to_img(config, graph)
 
 
     if module == "compare" or module == "all":
@@ -56,9 +55,6 @@ def main():
         to_img(config, graph)
 
         
-
-
-
 
 if __name__ == '__main__':
     main()

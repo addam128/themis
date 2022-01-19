@@ -5,7 +5,7 @@ description = ""
 authors = ["Ádám Ruman <ruman.adam@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "~3.8"
+python = ">= 3.7, < 3.11"
 networkx = "^2.6.3"
 matplotlib = "^3.5.0"
 frida = "^15.1.12"
