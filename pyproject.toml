@@ -14,7 +14,6 @@ pyserde = "^0.5.3"
 toml = "^0.10.2"
 Deprecated = "^1.2.13"
 scipy = "^1.7.3"
-pydot = "^1.4.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
