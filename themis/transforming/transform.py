@@ -22,17 +22,29 @@ def transform(config: Config) -> nx.Graph:
         return graph
 
 
-def reconstruct_from_conf(config: Config) -> nx.DiGraph:
-    return reconstruct_one(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+def reconstruct_from_conf_pickle(config: Config) -> nx.DiGraph:
+    return reconstruct_one_pickle(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
 
-def reconstruct_one(path: str) -> nx.DiGraph:
+def reconstruct_one_pickle(path: str) -> nx.DiGraph:
     graph = nx.read_gpickle(path=path)
     return graph
 
-def reconstruct_all(config: Config) -> Generator[nx.DiGraph, Any, Any]:
+def reconstruct_all_pickle(config: Config) -> Generator[nx.DiGraph, Any, Any]:
     with os.scandir(config.graph_dir) as graph_db:
         for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".pickle"), graph_db):
-            yield reconstruct_one(pfile.path)
+            yield reconstruct_one_pickle(pfile.path)
+
+def reconstruct_one_gexf(path: str) -> nx.DiGraph:
+    graph = nx.read_gexf(path=path)
+    return graph
+
+def reconstruct_all_gexf(config: Config) -> Generator[nx.DiGraph, Any, Any]:
+    with os.scandir(config.graph_dir) as graph_db:
+        for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".pickle"), graph_db):
+            yield reconstruct_one_gexf(pfile.path)
+
+def reconstruct_from_conf_gexf(config: Config) -> nx.DiGraph:
+    return reconstruct_one_gexf(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
 
 
 def to_img(config: Config, graph: nx.Graph):

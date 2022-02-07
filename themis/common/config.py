@@ -13,3 +13,4 @@ class Config:
     traced_libcalls_file: str
     executable: str
     args: List[str]
+    compareto: str

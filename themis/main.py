@@ -5,7 +5,7 @@ from serde.toml import from_toml
 
 from themis.common.config import Config
 from themis.tracing.tracer import trace
-from themis.transforming.transform import reconstruct_from_conf, transform, to_img
+from themis.transforming.transform import transform, to_img
 from themis.comparing.compare import compare
 
 
@@ -46,10 +46,7 @@ def main():
 
 
     if module == "compare" or module == "all":
-        if graph is None:
-            graph = reconstruct_from_conf(config)
-
-        compare(config, graph)
+        compare(config)
 
     if args.show:
         to_img(config, graph)

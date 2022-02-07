@@ -488,7 +488,7 @@ class GEXFWriter(GEXF):
                     str(k), self.xml_type[val_type], node_or_edge, default, mode
                 )
                 e = Element("attvalue")
-                e.attrib["for"] = str(k)
+                e.attrib["for"] = attr_id
                 if isinstance(v, bool):
                     e.attrib["value"] = str(v).lower()
                 else:
