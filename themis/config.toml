@@ -1,11 +1,12 @@
 lib_dir = "/opt/libs/"
 bin_dir = "/opt/binaries/"
-data_dir = "./themis/data/"
-graph_dir = "./themis/graphs/"
+trace_dir = "./themis/data/"
+trusted_graph_dir = "./themis/graphs/trusted/"
+dirty_graph_dir = "./themis/graphs/dirty/"
+img_dir = "./themis/graphs/img/"
+trust = false
 traced_libcalls_file = "./themis/trace_conf/libc_i_o.txt"
-executable = "ssh-8.2"
 args = [
     "ptolemy@172.16.0.10",
     "sleep 5 & uname -a & sleep 5 & uname -a"
 ]
-compareto = "ssh-8.3"

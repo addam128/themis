@@ -71,7 +71,7 @@ class Analyzer:
     def extract_libcalls(self):
 
         proc = self._spawn_target()
-        self._attach_trace(proc.pid, f"{self.config.data_dir}/libcalls_{self.config.executable}.txt")
+        self._attach_trace(proc.pid, f"{self.config.trace_dir}/libcalls_{self.config.executable}.txt")
         self._interact(proc)
 
     @deprecated("we are not writing to ssh, as it does not work")

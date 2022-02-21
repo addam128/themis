@@ -11,8 +11,8 @@ def trace(config: Config):
     ).extract_libcalls()
 
     filter_file(
-        f"{config.data_dir}/libcalls_{config.executable}.txt",
-        f"{config.data_dir}/libcalls_{config.executable}_filtered.txt"
+        f"{config.trace_dir}/libcalls_{config.executable}.txt",
+        f"{config.trace_dir}/libcalls_{config.executable}_filtered.txt"
     )
 
     system(f"rm {config.data_dir}/libcalls_{config.executable}.txt")

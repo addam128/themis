@@ -10,7 +10,7 @@ from themis.transforming.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MANI
      STREAM_MANIPULATORS, SOCKET_MANIPULATORS, PIPE_MANIPULATORS, FIFIO_MANIPULATORS,\
           TMP_MANIPULATORS, LINK_MANIPULATORS, DIRECTORY_MANIPULATORS
 
-CALL_REGEX = re.compile(r"(?P<offset>\s+)(?:\|\s+)?(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.]+)\)")
+CALL_REGEX = re.compile(r"(?P<offset>[\|\s]+)(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.\%\:\_]+)\)")
 CALLPOINT_REGEX = re.compile(r"::(?P<type>\w+)<(?P<id>\d+)>")
 
 
@@ -77,7 +77,7 @@ class CallParser:
         callpoint = mat.group("callpoint")
         offset = mat.group("offset")
 
-        return len(offset), self._create_node(func, index, args, callpoint)
+        return offset.count('|'), self._create_node(func, index, args, callpoint)
 
     def _create_node(self, func: str, index: int, args: str, callpoint: Optional[str]) -> Union[CallsNode, UUID]:
 

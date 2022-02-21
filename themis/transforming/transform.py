@@ -11,7 +11,7 @@ from themis.common.config import Config
 
 def transform(config: Config) -> nx.Graph:
     
-    with open(f"{config.data_dir}/libcalls_{config.executable}_filtered.txt", "r") as callfile:
+    with open(f"{config.trace_dir}/libcalls_{config.executable}_filtered.txt", "r") as callfile:
         
         parser = CallParser(callfile)
         grapher = Grapher(parser)
@@ -23,14 +23,14 @@ def transform(config: Config) -> nx.Graph:
 
 
 def reconstruct_from_conf_pickle(config: Config) -> nx.DiGraph:
-    return reconstruct_one_pickle(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+    return reconstruct_one_pickle(path=f"{config.dirty_graph_dir}/{config.executable}_graph.pickle")
 
 def reconstruct_one_pickle(path: str) -> nx.DiGraph:
     graph = nx.read_gpickle(path=path)
     return graph
 
 def reconstruct_all_pickle(config: Config) -> Generator[nx.DiGraph, Any, Any]:
-    with os.scandir(config.graph_dir) as graph_db:
+    with os.scandir(config.trusted_graph_dir) as graph_db:
         for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".pickle"), graph_db):
             yield reconstruct_one_pickle(pfile.path)
 
@@ -39,12 +39,12 @@ def reconstruct_one_gexf(path: str) -> nx.DiGraph:
     return graph
 
 def reconstruct_all_gexf(config: Config) -> Generator[nx.DiGraph, Any, Any]:
-    with os.scandir(config.graph_dir) as graph_db:
-        for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".pickle"), graph_db):
+    with os.scandir(config.trusted_graph_dir) as graph_db:
+        for pfile in filter(lambda entry: entry.is_file() and entry.name.endswith(".gexf"), graph_db):
             yield reconstruct_one_gexf(pfile.path)
 
 def reconstruct_from_conf_gexf(config: Config) -> nx.DiGraph:
-    return reconstruct_one_gexf(path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+    return reconstruct_one_gexf(path=f"{config.dirty_graph_dir}/{config.executable}_graph.gexf")
 
 
 def to_img(config: Config, graph: nx.Graph):
@@ -56,13 +56,13 @@ def to_img(config: Config, graph: nx.Graph):
         edge_colors.append("grey" if edge[2] == EdgeType.TIME else "green" if edge[2] == EdgeType.FOLLOW else "orange")
 
     nx.draw_kamada_kawai(graph, labels=labels, node_size=50, edge_color=edge_colors)
-    plt.savefig(f"{config.data_dir}/{config.executable}_plt.png")
+    plt.savefig(f"{config.img_dir}/{config.executable}_plt.png")
 
 
 def persist(config: Config, graph: nx.Graph) -> None:
-    nx.write_gpickle(graph, path=f"{config.graph_dir}/{config.executable}_graph.pickle")
+    nx.write_gpickle(graph, path=f"{config.trusted_graph_dir if config.trust else config.dirty_graph_dir}/{config.executable}_graph.pickle")
 
 
 def to_gexf(config: Config, graph: nx.Graph):
     from themis.transforming.gexf import write_gexf
-    write_gexf(graph, path=f"{config.graph_dir}/{config.executable}.gexf")
+    write_gexf(graph, path=f"{config.trusted_graph_dir if config.trust else config.dirty_graph_dir}/{config.executable}.gexf")

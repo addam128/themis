@@ -17,12 +17,13 @@ scipy = "^1.7.3"
 pandas = "^1.3.5"
 cython = "^0.29.26"
 numpy = "^1.21.5"
-munkres = "^1.1.4"
 gmatch4py = { git = "https://github.com/Jacobe2169/GMatch4py.git", branch = "master"}
+vptree = "^1.2"
+munkres = { git = "https://github.com/jfrelinger/cython-munkres-wrapper", branch = "master"}
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
 
 [build-system]
-requires = ["poetry-core>=1.0.0"]
+requires = ["poetry-core>=1.0.0", "cython"]
 build-backend = "poetry.core.masonry.api"
