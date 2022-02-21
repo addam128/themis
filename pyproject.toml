@@ -19,7 +19,8 @@ cython = "^0.29.26"
 numpy = "^1.21.5"
 gmatch4py = { git = "https://github.com/Jacobe2169/GMatch4py.git", branch = "master"}
 vptree = "^1.2"
-munkres = { git = "https://github.com/jfrelinger/cython-munkres-wrapper", branch = "master"}
+# munkres = { git = "https://github.com/jfrelinger/cython-munkres-wrapper.git", branch = "master"}
+ # poetry cant build this ATM, the solution is a pending pull request
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

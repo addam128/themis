@@ -159,6 +159,14 @@ class IOConstructType(IntFlag):
     FIFO = 12
     SOCKET = 13
 
+class NodeCounter:
+    oid = 1
+
+    @classmethod
+    def next(cls) -> int:
+        res = cls.oid
+        cls.oid += 1
+        return res
 
 @dataclass
 class IODesc:
@@ -192,7 +200,7 @@ class IOCall:
 
 @dataclass
 class CallsNode:
-    id: UUID = field(default_factory=uuid4)
+    id: UUID = field(default_factory=NodeCounter.next)
     call: IOCall = field(default=IOCall())
 
     @property
