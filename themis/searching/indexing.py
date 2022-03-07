@@ -34,8 +34,8 @@ class NormalizedGraphComparator(Comparator[gm.graph.Graph]):
 class RawGraphComparator(Comparator[gm.graph.Graph]):
     
     def distance(self, item1: gm.graph.Graph, item2: gm.graph.Graph) -> float:
-        ged_compute = gm.GraphEditDistance(1,1,1,1)
-        ged_compute.set_attr_graph_used("io_type", "")
+        ged_compute = gm.GraphEditDistance(1, 1, 1, 1)
+        ged_compute.set_attr_graph_used("func", "")
         res1 = ged_compute.distance_ged(item1, item2)
         #print(res1)
         return res1
@@ -109,7 +109,7 @@ class IOIntensiveVPTreeWrapper(VPTreeWrapper[Path]):
     
 class InMemoryVPTreeWrapper(VPTreeWrapper[gm.graph.Graph]):
     def __init__(self, config: Config):
-        super().__init__(config, NormalizedGraphComparator())
+        super().__init__(config, RawGraphComparator())
 
     def get_datapoints(self) -> List[nx.Graph]:
         return reconstruct_all_gexf(self._config)

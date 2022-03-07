@@ -1,7 +1,6 @@
-from typing import NamedTuple, Optional, List, Any, Dict
+from typing import NamedTuple, Optional, List, Any, Dict, Tuple
 from enum import Enum, auto, IntFlag
 from dataclasses import dataclass, field
-from uuid import uuid4, UUID
 
 CLOSERS = [
     "fclose",
@@ -41,17 +40,37 @@ STREAM_MANIPULATORS = [
     "fread_unlocked",
     "fwrite",
     "fwrite_unlocked",
-    "printf",
     "wprintf",
     "fprintf",
     "fwprintf",
-    "sprintf",
-    "swprintf",
-    "snprintf",
     "fscanf",
     "fwscanf",
-    "sscanf",
-    "swscanf"
+    "putc",
+    "putwc",
+    "putc_unlocked",
+    "putwc_unlocked",
+    "putchar",
+    "putwchar",
+    "putchar_unlocked",
+    "putwchar_unlocked",
+    "getc",
+    "getwc",
+    "getc_unlocked",
+    "getwc_unlocked",
+    "getw"
+]
+
+STDSTREAM_MANIPULATORS = [
+    "puts",
+    "putw",
+    "getchar",
+    "getwchar",
+    "getchar_unlocked",
+    "getwchar_unlocked",
+    "gets",
+    "printf",
+    "wprintf"
+
 ]
 
 BINFILE_MANIPULATORS = [
@@ -80,7 +99,12 @@ MEMORY_MANIPULATORS = [
     "munmap",
     "msync",
     "mremap",
-    "madvise"
+    "madvise",
+    "sprintf",
+    "swprintf",
+    "snprintf",
+    "sscanf",
+    "swscanf",
 ]
 
 DIRECTORY_MANIPULATORS = [
@@ -180,13 +204,22 @@ class IODescFunc(Enum):
     OPEN = auto()
     USE = auto()
     CLOSE = auto()
-    CHANGE = auto()
+    TWEAK = auto()
     NONE = auto()
 
 @dataclass
 class Function:
     funcname: str
     effect: IODescFunc
+
+
+class FunctionComparator:
+    equivalence_classes = [
+        [],
+        [],
+        [],
+    ]
+    
 
 
 @dataclass
@@ -197,10 +230,17 @@ class IOCall:
     out_fd: Optional[List[IODesc]] = field(default=None)
     args: Dict[str, Any] = field(default_factory=dict)
 
+    @staticmethod
+    def compare(call1: 'IOCall', call2: 'IOCall') -> Tuple[int]:
+        res = 100
+
+
+        return res
+
 
 @dataclass
 class CallsNode:
-    id: UUID = field(default_factory=NodeCounter.next)
+    id: int = field(init=False, default_factory=NodeCounter.next)
     call: IOCall = field(default=IOCall())
 
     @property
@@ -250,3 +290,17 @@ class GraphFunc(Enum):
 class CallsNodeAndFunc(NamedTuple):
     call: CallsNode
     func: Optional[GraphFunc]
+
+
+ARGS_TO_EXCLUDE = [
+    "buf",
+    "iov",
+    "optval",
+    "ptr",
+    "stream",
+    "lineptr",
+    "n",
+    "retval",
+    "dest_addr",
+    "n"
+]

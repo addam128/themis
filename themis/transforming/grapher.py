@@ -24,12 +24,14 @@ class Grapher:
         self._graph.add_node("entry", call=CallsNode(call=IOCall(func=Function("entry", IODescFunc.NONE))))
 
     def _create_tree(self) -> None:
-        last_node = "entry"
+        # NOTE: uncomment the lines if you want the time-structure to be seen as edges (without that it is encoded into node id-s) 
+
+        #last_node = "entry"
         for call, action in self._parser.parse():
 
             self._graph.add_node(str(call.id), call=call)
-            self._graph.add_edge(last_node, str(call.id), type=EdgeType.TIME)
-            last_node = str(call.id)
+            #self._graph.add_edge(last_node, str(call.id), type=EdgeType.TIME)
+            #last_node = str(call.id)
             parent = "entry" if call.input_fd is None else self._i_o_descriptors.get(call.input_fd.fd, "entry")
             self._graph.add_edge(parent, str(call.id), type=EdgeType.FOLLOW)
             if call.input_fd is not None:

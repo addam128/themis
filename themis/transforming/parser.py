@@ -105,7 +105,7 @@ class CallParser:
             call.call.out_fd = out_fd
             call.index = index
 
-            if call.func.funcname == "fopen":
+            if call.func.funcname == "fopen" and call.output_fd is not None:
                 call.output_fd[0].internal = self._available_internal_fds.get(call.id, None)
 
             return call
@@ -146,7 +146,7 @@ class CallParser:
                 if value is None:
                     print(f"Function {func} gives no file descriptor")
                     continue
-                if func == "fopen" and value == "0x00":
+                if func == "fopen" and int(value, base=16) == 0x00:
                     print(f"fopen returned null")
                     continue
                 same_fd = self._iodesc.get(int(value, base=16), None)

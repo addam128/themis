@@ -9,15 +9,16 @@ from themis.transforming.grapher import Grapher, EdgeType
 from themis.common.config import Config
 
 
-def transform(config: Config) -> nx.Graph:
+def transform(config: Config, save: bool) -> nx.Graph:
     
     with open(f"{config.trace_dir}/libcalls_{config.executable}_filtered.txt", "r") as callfile:
         
         parser = CallParser(callfile)
         grapher = Grapher(parser)
         graph = grapher.into_graph()
-        persist(config, graph)
-        to_gexf(config, graph)
+        if save:
+            persist(config, graph)
+            to_gexf(config, graph)
 
         return graph
 
@@ -55,7 +56,7 @@ def to_img(config: Config, graph: nx.Graph):
     for edge in graph.edges(data="type"):
         edge_colors.append("grey" if edge[2] == EdgeType.TIME else "green" if edge[2] == EdgeType.FOLLOW else "orange")
 
-    nx.draw_kamada_kawai(graph, labels=labels, node_size=50, edge_color=edge_colors)
+    nx.draw_spring(graph, labels=labels, node_size=50, edge_color=edge_colors)
     plt.savefig(f"{config.img_dir}/{config.executable}_plt.png")
 
 

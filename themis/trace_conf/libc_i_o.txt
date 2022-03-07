@@ -90,6 +90,7 @@ readdir
 readdir_r
 closedir
 scandir
+scandirat
 link
 linkat
 symlink
@@ -107,6 +108,9 @@ tmpnam_r
 tempnam
 mktemp
 mkstemp
+mkostemp
+mkstemps
+mkostemps
 mkdtemp
 pipe
 popen
@@ -122,6 +126,7 @@ accept
 send
 recv
 sendto
+sendmsg
 recvfrom
 getsockopt
 setsockopt
