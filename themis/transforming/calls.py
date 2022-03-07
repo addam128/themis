@@ -70,7 +70,6 @@ STDSTREAM_MANIPULATORS = [
     "gets",
     "printf",
     "wprintf"
-
 ]
 
 BINFILE_MANIPULATORS = [
@@ -167,21 +166,20 @@ FIFIO_MANIPULATORS = [
     "mkfifoat"
 ]
 
+
 class IOConstructType(IntFlag):
     UNKNOWN = 0
     INVALID = 1
-    STDIN = 2
-    STDOUT = 3
-    STDERR = 4
-    BINFILE = 5
-    STREAM = 6
-    MEMORY = 7
-    DIRECTORY = 8
-    LINK = 9
-    TMP = 10
-    PIPE = 11
-    FIFO = 12
-    SOCKET = 13
+    BINFILE = 2
+    STDSTREAM = 3
+    STREAM = 4
+    MEMORY = 5
+    DIRECTORY = 6
+    LINK = 7
+    TMP = 8
+    PIPE = 9
+    FIFO = 10
+    SOCKET = 11
 
 class NodeCounter:
     oid = 1
@@ -207,19 +205,112 @@ class IODescFunc(Enum):
     TWEAK = auto()
     NONE = auto()
 
+
 @dataclass
 class Function:
     funcname: str
     effect: IODescFunc
 
 
+class FunctionComparisonResult(Enum):
+    EQUAL = auto()
+    EQUIV_CLASS = auto()
+    DIFFERENT = auto()
+
+
 class FunctionComparator:
     equivalence_classes = [
-        [],
-        [],
-        [],
+        ["read", "readv"],
+        ["write", "writev"],
+        ["pwrite", "pwritev", "pwritev2"],
+        ["pread", "preadv", "preadv2"],
+        ["fputc", "fputwc", "fputc_unlocked", "fputwc_unlocked", "putc", "putwc", "putc_unlocked", "putwc_unlocked"],
+        ["putchar", "putwchar", "putchar_unlocked", "putwchar_unlocked"],
+        ["puts", "putw"],
+        ["fgetc", "fgetwc", "fgetc_unlocked", "fgetwc_unlocked", "getc", "getwc", "getw", "getc_unlocked", "getwc_unlocked"],
+        ["getchar", "getwchar", "getchar_unlocked", "getwchar_unlocked"],
+        ["fgets", "fgetws", "fgets_unlocked", "fgetws_unlocked"],
+        ["fputs", "fputws"],
+        ["printf", "wprintf"],
+        ["sprintf", "swsprintf", "snprintf"],
+        ["scanf", "wscanf"],
+        ["fprintf", "fwprintf"],
+        ["fscanf", "fwscanf"],
+        ["swscanf", "sscanf"],
+        ["chdir", "fchdir"],
+        ["opendir", "fdopendir"],
+        ["scandir", "scandirat"],
+        ["link", "linkat"],
+        ["tmpnam", "tmpnam_r", "tempnam"],
+        ["mktemp", "mkstemp", "mkostemp"],
+        ["mkstemps", "mkostemps"],
+        ["send", "sendto", "sendmsg"],
+        ["recv", "recvfrom"]
     ]
+
+    @classmethod
+    def compare(cls, fname1: str, fname2: str) -> FunctionComparisonResult:
+        if fname1 == fname2:
+            return FunctionComparisonResult.EQUAL
+        for ec in cls.equivalence_classes:
+            if fname1 in ec:
+                if fname2 in ec:
+                    return FunctionComparisonResult.EQUIV_CLASS
+        return FunctionComparisonResult.DIFFERENT
     
+
+class ArgStatus(Enum):
+    MISSING = auto()
+    EXCESSIVE = auto()
+    VALUE_MISMATCH = auto()
+    MATCHING = auto()
+
+
+class ArgsComparator:
+    args_to_exclude = [
+        "buf",
+        "iov",
+        "optval",
+        "ptr",
+        "stream",
+        "lineptr",
+        "n",
+        "retval",
+        "dest_addr",
+        "n" 
+    ]
+
+    @classmethod
+    def compare(cls, args1: Dict[str, Any], args2: Dict[str, Any]) -> Tuple[int, Dict[str, Tuple[ArgStatus, Any, Any]]]:
+        penalty = 0
+        args1_filtered = dict((key, val) for key, val in args1.items if key not in cls.args_to_exclude)
+        args2_filtered = dict((key, val) for key, val in args2.items if key not in cls.args_to_exclude)
+        differences = dict()
+
+        for key, val in args1_filtered.items:
+            if key not in args2_filtered.keys:
+                differences[key] = (ArgStatus.EXCESSIVE, val, None)
+                penalty += 4
+            else:
+                if (val2 := args2_filtered[key]) == val:
+                    differences[key] = (ArgStatus.MATCHING, val, None)
+                else:
+                    differences[key] = (ArgStatus.VALUE_MISMATCH, val, val2)
+                    penalty += 2
+        
+        for key, val in args2_filtered.items:
+            if key not in args1_filtered.keys:
+                differences[key] = (ArgStatus.MISSING, None, val)
+                penalty += 4
+
+        return penalty, differences
+
+
+@dataclass
+class DiffInfo:
+    func_diff: Tuple[str, str, FunctionComparisonResult]
+    idx_diff: Tuple[int, int] 
+    args_diff: Dict[str, Tuple[ArgStatus, Any, Any]]
 
 
 @dataclass
@@ -231,11 +322,29 @@ class IOCall:
     args: Dict[str, Any] = field(default_factory=dict)
 
     @staticmethod
-    def compare(call1: 'IOCall', call2: 'IOCall') -> Tuple[int]:
+    def compare(call1: 'IOCall', call2: 'IOCall') -> Tuple[int, DiffInfo]:
         res = 100
 
+        # func
+        func_match = FunctionComparator.compare(call1.func.funcname, call2.func.funcname)
+        if func_match == FunctionComparisonResult.EQUIV_CLASS:
+            res -= 15
+        elif func_match == FunctionComparisonResult.DIFFERENT:
+            res -= 40
+        # EQUAL doesn't change the result
 
-        return res
+        # index
+        res -= (abs(call1.index - call2.index) // 5) * 2
+
+        # args
+        penalty, arg_diffs = ArgsComparator.compare(call1.args, call2.args)
+        res -= penalty
+
+        return res, DiffInfo(
+            func_diff=(call1.func.funcname, call2.func.funcname, func_match),
+            idx_diff=(call1.index, call2.index),
+            args_diff= arg_diffs
+        )
 
 
 @dataclass
@@ -290,17 +399,3 @@ class GraphFunc(Enum):
 class CallsNodeAndFunc(NamedTuple):
     call: CallsNode
     func: Optional[GraphFunc]
-
-
-ARGS_TO_EXCLUDE = [
-    "buf",
-    "iov",
-    "optval",
-    "ptr",
-    "stream",
-    "lineptr",
-    "n",
-    "retval",
-    "dest_addr",
-    "n"
-]

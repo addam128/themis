@@ -4,7 +4,7 @@ from typing import Generator, Optional, List, Any, Tuple, Union, Dict
 from dataclasses import dataclass, field
 from uuid import uuid4, UUID
 
-from themis.transforming.calls import CallsNode, IODescAndState, IOConstructType,\
+from themis.transforming.calls import STDSTREAM_MANIPULATORS, CallsNode, IODescAndState, IOConstructType,\
      IODesc, IODescFunc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, Function
 from themis.transforming.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MANIPULATORS,\
      STREAM_MANIPULATORS, SOCKET_MANIPULATORS, PIPE_MANIPULATORS, FIFIO_MANIPULATORS,\
@@ -237,6 +237,8 @@ def guess_io_type(old_guess: IOConstructType, func: Function):
         new_guess = IOConstructType.FIFO
     elif func.funcname in STREAM_MANIPULATORS:
         new_guess = IOConstructType.STREAM
+    elif func.funcname in STDSTREAM_MANIPULATORS:
+        new_guess = IOConstructType.STDSTREAM
     elif func.funcname in BINFILE_MANIPULATORS:
         new_guess = IOConstructType.BINFILE
 
