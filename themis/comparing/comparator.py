@@ -1,8 +1,9 @@
 import imp
 import networkx as nx
-from ortools.linear_solver import pywraplp
+import itertools
 
-from typing import Union, List, Dict, Iterable, Tuple, NamedTuple
+from ortools.linear_solver import pywraplp
+from typing import Union, List, Dict, Iterable, Tuple, NamedTuple, Optional
 
 from themis.transforming.transform import reconstruct_one_pickle 
 from themis.common.config import Config
@@ -16,9 +17,9 @@ NodeID = Union[int, str]
 
 
 class NodeMatch(NamedTuple):
-    a_node: NodeID
-    b_node: NodeID
-    differences: DiffInfo
+    d_node: Optional[NodeID]
+    t_node: Optional[NodeID]
+    differences: Optional[DiffInfo]
 
 
 
@@ -61,6 +62,29 @@ class BranchComparator:
 
 
 
+    def _structural_penalty(self, assignment: List[Tuple[NodeID, NodeID]]) -> int:
+        accumulator = 0
+        for a1, a2 in itertools.combinations(assignment, 2):
+            accumulator += abs(
+                nx.shortest_path_length(
+                    self._branch_d,
+                    source=min(a1[0], a2[0]),
+                    target=max(a1[0], a2[0]),
+                    weight=None
+                ) 
+                -
+                nx.shortest_path_length(
+                    self._branch_t,
+                    source=min(a1[1], a2[1]),
+                    target=max(a1[1], a2[1]),
+                    weight=None
+                )
+            ) * 2
+
+        return accumulator
+
+
+
     def compare(self) -> Tuple[int, List[NodeMatch]]:
         diffs = dict()
         distances = dict()
@@ -71,9 +95,27 @@ class BranchComparator:
                 distances[(node_d, node_t)] = val
                 diffs[(node_d, node_t)] = diff
 
-
         node_match_avg, node_assignments = self._assign(distances)
-        pass # TODO: finish this
+        structural_penalty = self._structural_penalty(node_assignments)
+
+        #print(f"Node match AVG is {node_match_avg}, assignments are as follows: {node_assignments}\n",
+            #f"structural penalty: {structural_penalty}")
+        nodes_d = set(self._branch_d.nodes)
+        nodes_t = set(self._branch_t.nodes)
+        result = list()
+
+        for pair in node_assignments:
+            result.append(NodeMatch(d_node=pair[0], t_node=pair[1], differences=diffs[pair]))
+            nodes_d.remove(pair[0])
+            nodes_t.remove(pair[1])
+
+        for node in nodes_d:
+            result.append(NodeMatch(d_node=node, t_node=None, differences=None))
+
+        for node in nodes_t:
+            result.append(NodeMatch(d_node=None, t_node=node, differences=None))
+
+        return node_match_avg - structural_penalty, result
 
 
 
@@ -138,12 +180,17 @@ class DeepGraphComparator:
 
     def compare(self) -> None:
         dirty_branches, trusted_branches = self._get_branches()
-        print(dirty_branches)
-        print(trusted_branches)
+        #print(dirty_branches)
+        #print(trusted_branches)
         diffs = BranchComparator(
             dirty_branches[IOConstructType.BINFILE][0],
             trusted_branches[IOConstructType.BINFILE][0]
         ).compare()
+
+        print(diffs)
+
+        pass # TODO: compare all relevant branches, + solve those which might not be under same IOtype but could match
+        # Choose best assignment - ortools again 
 
 
 

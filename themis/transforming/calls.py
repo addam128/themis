@@ -298,7 +298,8 @@ class ArgsComparator:
         "n",
         "retval",
         "dest_addr",
-        "n" 
+        "n",
+        "fd" 
     ]
 
 
