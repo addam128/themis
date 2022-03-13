@@ -6,8 +6,8 @@ from deprecated import deprecated
 
 from themis.common.config import Config
 
-class Analyzer:
 
+class Analyzer:
     def __init__(self, config: Config) -> None:
 
         self.config = config
@@ -15,6 +15,7 @@ class Analyzer:
 
         self._traced_functions = set()
         self._load_function_names(config.traced_libcalls_file)
+
 
 
     @deprecated("we ar not spawning processes, as that breaks them")
@@ -28,6 +29,8 @@ class Analyzer:
         for dep in filter(lambda dep: dep.soname is not None, dependencies):
             self._dependencies.add(_extract_pure_soname(dep))
 
+
+
     @deprecated("frida cant attach to suspended process")
     def _spawn_suspended_target(self):
         # cant attach frida tho
@@ -40,6 +43,8 @@ class Analyzer:
         )
         return proc
 
+
+
     def _spawn_target(self):
         changed_env = os.environ.copy()
         changed_env["LD_LIBRARY_PATH"] = f"{self.config.lib_dir}"
@@ -48,6 +53,8 @@ class Analyzer:
             env=changed_env
         )
         return proc
+
+
 
     def _attach_trace(self, pid: int, outname: str):
         # simply via bash atm, as we dont want to reimplement frida-trace
@@ -68,16 +75,22 @@ class Analyzer:
             )
             return trace_process
 
+
+
     def extract_libcalls(self):
 
         proc = self._spawn_target()
         self._attach_trace(proc.pid, f"{self.config.trace_dir}/libcalls_{self.config.executable}.txt")
         self._interact(proc)
 
+
+
     @deprecated("we are not writing to ssh, as it does not work")
     def _interact(self, process: subprocess.Popen):
         # process.communicate(b"ishtar\nuname -a\nexit", timeout=20)
         process.wait()
+
+
 
     def _load_function_names(self, filename):
 

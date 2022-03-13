@@ -167,6 +167,7 @@ FIFIO_MANIPULATORS = [
 ]
 
 
+
 class IOConstructType(IntFlag):
     UNKNOWN = 0
     INVALID = 1
@@ -181,6 +182,9 @@ class IOConstructType(IntFlag):
     FIFO = 10
     SOCKET = 11
 
+
+
+
 class NodeCounter:
     oid = 1
 
@@ -190,12 +194,17 @@ class NodeCounter:
         cls.oid += 1
         return res
 
+
+
+
 @dataclass
 class IODesc:
     typ: IOConstructType = field(default=IOConstructType.INVALID)
     fd: Optional[int] = field(default=None)
     desc: Optional[str] = field(default=None)
     internal: Optional['IODesc'] = field(default=None)
+
+
 
 
 class IODescFunc(Enum):
@@ -206,16 +215,22 @@ class IODescFunc(Enum):
     NONE = auto()
 
 
+
+
 @dataclass
 class Function:
     funcname: str
     effect: IODescFunc
 
 
+
+
 class FunctionComparisonResult(Enum):
     EQUAL = auto()
     EQUIV_CLASS = auto()
     DIFFERENT = auto()
+
+
 
 
 class FunctionComparator:
@@ -248,6 +263,8 @@ class FunctionComparator:
         ["recv", "recvfrom"]
     ]
 
+
+
     @classmethod
     def compare(cls, fname1: str, fname2: str) -> FunctionComparisonResult:
         if fname1 == fname2:
@@ -259,11 +276,15 @@ class FunctionComparator:
         return FunctionComparisonResult.DIFFERENT
     
 
+
+
 class ArgStatus(Enum):
     MISSING = auto()
     EXCESSIVE = auto()
     VALUE_MISMATCH = auto()
     MATCHING = auto()
+
+
 
 
 class ArgsComparator:
@@ -280,15 +301,17 @@ class ArgsComparator:
         "n" 
     ]
 
+
+
     @classmethod
     def compare(cls, args1: Dict[str, Any], args2: Dict[str, Any]) -> Tuple[int, Dict[str, Tuple[ArgStatus, Any, Any]]]:
         penalty = 0
-        args1_filtered = dict((key, val) for key, val in args1.items if key not in cls.args_to_exclude)
-        args2_filtered = dict((key, val) for key, val in args2.items if key not in cls.args_to_exclude)
+        args1_filtered = dict((key, val) for key, val in args1.items() if key not in cls.args_to_exclude)
+        args2_filtered = dict((key, val) for key, val in args2.items() if key not in cls.args_to_exclude)
         differences = dict()
 
-        for key, val in args1_filtered.items:
-            if key not in args2_filtered.keys:
+        for key, val in args1_filtered.items():
+            if key not in args2_filtered.keys():
                 differences[key] = (ArgStatus.EXCESSIVE, val, None)
                 penalty += 4
             else:
@@ -298,12 +321,14 @@ class ArgsComparator:
                     differences[key] = (ArgStatus.VALUE_MISMATCH, val, val2)
                     penalty += 2
         
-        for key, val in args2_filtered.items:
-            if key not in args1_filtered.keys:
+        for key, val in args2_filtered.items():
+            if key not in args1_filtered.keys():
                 differences[key] = (ArgStatus.MISSING, None, val)
                 penalty += 4
 
         return penalty, differences
+
+
 
 
 @dataclass
@@ -313,6 +338,8 @@ class DiffInfo:
     args_diff: Dict[str, Tuple[ArgStatus, Any, Any]]
 
 
+
+
 @dataclass
 class IOCall:
     index: int = field(default=-1)  # order in input file
@@ -320,6 +347,8 @@ class IOCall:
     in_fd: Optional[IODesc] = field(default=None)
     out_fd: Optional[List[IODesc]] = field(default=None)
     args: Dict[str, Any] = field(default_factory=dict)
+
+
 
     @staticmethod
     def compare(call1: 'IOCall', call2: 'IOCall') -> Tuple[int, DiffInfo]:
@@ -334,7 +363,8 @@ class IOCall:
         # EQUAL doesn't change the result
 
         # index
-        res -= (abs(call1.index - call2.index) // 5) * 2
+        res -= (1 if call1.index != call2.index else 0)
+        res -= (abs(call1.index - call2.index) // 3) * 3
 
         # args
         penalty, arg_diffs = ArgsComparator.compare(call1.args, call2.args)
@@ -347,34 +377,50 @@ class IOCall:
         )
 
 
+
+
 @dataclass
 class CallsNode:
     id: int = field(init=False, default_factory=NodeCounter.next)
     call: IOCall = field(default=IOCall())
 
+
+
     @property
     def index(self) -> int:
         return self.call.index
+
+
 
     @index.setter
     def index(self, value: int) -> None:
         self.call.index = value
 
+
+
     @property
     def func(self) -> Function:
         return self.call.func
+
+
 
     @property
     def input_fd(self) -> Optional[IODesc]:
         return self.call.in_fd
 
+
+
     @property
     def output_fd(self) -> Optional[List[IODesc]]:
         return self.call.out_fd
 
+
+
     @property
     def args(self) -> Dict[str, Any]:
         return self.call.args
+
+
 
 
 class IODescState(Enum):
@@ -384,16 +430,22 @@ class IODescState(Enum):
     UNKNOWN = auto()  #  for inherited fds, when we dont know their state for sure
 
 
+
+
 @dataclass
 class IODescAndState:
     iodesc: IODesc
     state: IODescState
 
 
+
+
 class GraphFunc(Enum):
     RESET_FD = auto()
     RESET_STREAMS = auto()
     NONE = auto()
+
+
 
 
 class CallsNodeAndFunc(NamedTuple):

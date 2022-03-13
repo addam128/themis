@@ -69,6 +69,7 @@ def transform_entry(config: Config, args):
     config.trust = args.trusted
 
     graph = transform(config, args.save)
+
     if args.img:
         to_img(config, graph)
 
@@ -128,11 +129,12 @@ def main():
     with open(conf_path, "r") as config_file:
         config = from_toml(Config, config_file.read())
 
-    try: 
-        args.func(config, args)
+    #try: 
+    args.func(config, args)
     
-    except AttributeError:
-        parser.print_help()
+    #except AttributeError:
+     #   print("Something went wrong ...")
+      #  parser.print_help()
         
 
         

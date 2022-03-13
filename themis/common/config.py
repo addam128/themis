@@ -2,6 +2,7 @@ from dataclasses import dataclass, field
 from serde import serialize, deserialize
 from typing import List, Optional
 
+
 @serialize
 @deserialize
 @dataclass

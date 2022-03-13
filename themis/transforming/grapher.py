@@ -13,6 +13,8 @@ class EdgeType(Enum):
     TIME = auto()
 
 
+
+
 class Grapher:
     def __init__(self, parser: CallParser) -> None:
         self._parser = parser
@@ -20,8 +22,12 @@ class Grapher:
         self._i_o_descriptors = dict()  # fd_int : (IODesc, node_id) - node_id points to last event for particular fd
         self._init_graph()
 
+
+
     def _init_graph(self):
         self._graph.add_node("entry", call=CallsNode(call=IOCall(func=Function("entry", IODescFunc.NONE))))
+
+
 
     def _create_tree(self) -> None:
         # NOTE: uncomment the lines if you want the time-structure to be seen as edges (without that it is encoded into node id-s) 
@@ -49,9 +55,13 @@ class Grapher:
             if action == GraphFunc.RESET_STREAMS:
                 pass  # TODO
 
+
+
     def _add_nesting_edges(self) -> None:
         for start, end in self._parser.nesting_edges():
             self._graph.add_edge(start, end, type=EdgeType.NEST)
+
+
 
     def into_graph(self) -> Tuple[nx.DiGraph, List]:
         self._create_tree()

@@ -26,17 +26,19 @@ class CallParser:
         self._iodesc: Dict[int, IODescAndState] = dict()
 
         self._iodesc[0x00] = IODescAndState(
-            IODesc(typ=IOConstructType.STDIN, fd=0x00, desc="standard input, inherited"),
+            IODesc(typ=IOConstructType.STDSTREAM, fd=0x00, desc="standard input, inherited"),
             IODescState.UNKNOWN
         )
         self._iodesc[0x01] = IODescAndState(
-            IODesc(typ=IOConstructType.STDOUT, fd=0x01, desc="standard output, inherited"),
+            IODesc(typ=IOConstructType.STDSTREAM, fd=0x01, desc="standard output, inherited"),
             IODescState.UNKNOWN
         )
         self._iodesc[0x02] = IODescAndState(
-            IODesc(typ=IOConstructType.STDERR, fd=0x02, desc="standard error, inherited"),
+            IODesc(typ=IOConstructType.STDSTREAM, fd=0x02, desc="standard error, inherited"),
             IODescState.UNKNOWN
         )
+
+
 
     def parse(self) -> Generator[CallsNodeAndFunc, Any, Any]:
         previous_offset = 2
@@ -59,8 +61,12 @@ class CallParser:
             else:
                 return
 
+
+
     def nesting_edges(self) -> List[Tuple[str, str]]:
         return self._edges
+
+
 
     def _node_from_line(self, line: str) -> Optional[Tuple[int, Union[CallsNode, UUID]]]:  # int is offset
 
@@ -78,6 +84,8 @@ class CallParser:
         offset = mat.group("offset")
 
         return offset.count('|'), self._create_node(func, index, args, callpoint)
+
+
 
     def _create_node(self, func: str, index: int, args: str, callpoint: Optional[str]) -> Union[CallsNode, UUID]:
 
@@ -110,11 +118,15 @@ class CallParser:
 
             return call
 
+
+
     def _parse_args(self, args: str) -> Dict[str, Any]:
         arg_dict = dict()
         for name, value in map(lambda x: tuple(x.split("=")), args.split(", ")):
             arg_dict[name] = value
         return arg_dict
+
+
 
     def _get_in_fd(self, args: Dict[str, Any], func: str) -> Optional[IODesc]:
         key = None
@@ -136,6 +148,8 @@ class CallParser:
 
                 return same_fd.iodesc
         return None
+
+
 
     def _get_out_fd(self, args: Dict[str, Any], func: str) -> Optional[List[IODesc]]:
         key = None
@@ -162,11 +176,15 @@ class CallParser:
 
         return new_iodesc if len(new_iodesc) > 0 else None
 
+
+
     def _next(self) -> Optional[str]:
         try:
             return next(self._lines)
         except StopIteration:
             None
+
+
 
     def _postprocess_node(self, node: CallsNode) -> GraphFunc:
         ret_func = None
@@ -209,14 +227,20 @@ class CallParser:
 
         return ret_func
 
+
+
     def _create_function(self, func: str):
         return Function(funcname=func, effect=IODescFunc.NONE) # TODO: proper effect
+
+
 
 
 def extract_uuid(node: Union[UUID, CallsNode]) -> str:
     if isinstance(node, CallsNode):
         return str(node.id)
     return str(node)
+
+
 
 def guess_io_type(old_guess: IOConstructType, func: Function):
     new_guess = IOConstructType.UNKNOWN
@@ -243,5 +267,3 @@ def guess_io_type(old_guess: IOConstructType, func: Function):
         new_guess = IOConstructType.BINFILE
 
     return new_guess if new_guess > old_guess else old_guess
-
-    

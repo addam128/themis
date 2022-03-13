@@ -1,28 +1,82 @@
+import imp
 import networkx as nx
+from ortools.linear_solver import pywraplp
 
-from typing import Union, List, Dict, Iterable, Tuple, Optional, NamedTuple, Any
+from typing import Union, List, Dict, Iterable, Tuple, NamedTuple
 
 from themis.transforming.transform import reconstruct_one_pickle 
 from themis.common.config import Config
-from themis.transforming.calls import CallsNode, IOConstructType
+from themis.transforming.calls import CallsNode, DiffInfo, IOCall, IOConstructType
+from themis.comparing.error import AssignmentSolverException
 
 
 NodeID = Union[int, str]
 
 
+
+
 class NodeMatch(NamedTuple):
     a_node: NodeID
     b_node: NodeID
-    differences: Dict[str, Tuple[Any, Any]]
+    differences: DiffInfo
+
+
 
 
 class BranchComparator:
-    def __init__(self, graph_a: nx.Graph, graph_b: nx.Graph) -> None:
-        self._graph_a = graph_a
-        self._graph_b = graph_b
+    def __init__(self, branch_d: nx.Graph, branch_t: nx.Graph) -> None:
+        self._branch_d = branch_d
+        self._branch_t = branch_t
 
-    def compare(self) -> Tuple(int, List[NodeMatch]):
-        pass
+
+
+    def _assign(self, distances: Dict[Tuple[NodeID, NodeID], int]) -> Tuple[int, List[Tuple[NodeID, NodeID]]]:
+
+        solver = pywraplp.Solver.CreateSolver('SCIP')
+
+        assignments = dict((pair, solver.IntVar(0, 1, '')) for pair in distances.keys())
+        
+        for node_d in self._branch_d.nodes:
+            solver.Add(solver.Sum([assignments[(node_d, node_t)] for node_t in self._branch_t.nodes]) <= 1)
+
+        for node_t in self._branch_t.nodes:
+            solver.Add(solver.Sum([assignments[(node_d, node_t)] for node_d in self._branch_d.nodes]) <= 1)
+
+        objective = list()
+        for pair in distances.keys():
+            objective.append( distances[pair] * assignments[pair])
+
+        solver.Maximize(solver.Sum(objective))
+        status = solver.Solve()
+        
+        if status == pywraplp.Solver.OPTIMAL or status == pywraplp.Solver.FEASIBLE:
+            match_avg = solver.Objective().Value() / max(self._branch_d.number_of_nodes(), self._branch_t.number_of_nodes())
+            result = []
+            for pair, state in assignments.items():
+                if state.solution_value() > 0.5:
+                    result.append(pair)
+            return match_avg, result
+        else:
+            raise AssignmentSolverException()
+
+
+
+    def compare(self) -> Tuple[int, List[NodeMatch]]:
+        diffs = dict()
+        distances = dict()
+
+        for node_d, data_d in self._branch_d.nodes(data="call"):
+            for node_t, data_t in self._branch_t.nodes(data="call"):
+                val, diff = IOCall.compare(data_d, data_t)
+                distances[(node_d, node_t)] = val
+                diffs[(node_d, node_t)] = diff
+
+
+        node_match_avg, node_assignments = self._assign(distances)
+        pass # TODO: finish this
+
+
+
 
 
 class DeepGraphComparator:
@@ -33,6 +87,8 @@ class DeepGraphComparator:
         self._trusted_nodes = self._trusted_graph.nodes(data=True)
 
         self._branches = self._get_branches()
+
+
 
     @staticmethod
     def _guess_io_type(call: CallsNode) -> IOConstructType:
@@ -46,8 +102,10 @@ class DeepGraphComparator:
         io_type = sorted(type_hints, reverse=True)[0] if len(type_hints) > 0 else IOConstructType.UNKNOWN
         return io_type
 
+
+
     @staticmethod
-    def _get_subgraphs(children: Iterable[NodeID], graph:nx.Graph) -> Dict[IOConstructType, nx.Graph]:
+    def _get_subgraphs(children: Iterable[NodeID], graph:nx.Graph) -> Dict[IOConstructType, List[nx.Graph]]:
         res = dict()
         for child in children:
             io_type = DeepGraphComparator._guess_io_type(graph.nodes[child]["call"])
@@ -56,6 +114,8 @@ class DeepGraphComparator:
             res[io_type].append(graph.subgraph(DeepGraphComparator._traverse(child, graph)))
         return res
 
+
+
     @staticmethod
     def _traverse(node: NodeID, graph: nx.Graph) -> List[Union[int, str]]:
         res = [node]
@@ -63,7 +123,9 @@ class DeepGraphComparator:
             res.extend(DeepGraphComparator._traverse(successor, graph))
         return res
 
-    def _get_branches(self) -> Tuple[Dict[IOConstructType, nx.Graph]]:
+
+
+    def _get_branches(self) -> Tuple[Dict[IOConstructType, List[nx.Graph]]]:
         dirty_idx = "entry"
         trusted_idx = "entry"
         dirty_children = self._dirty_graph.neighbors(dirty_idx)
@@ -73,10 +135,15 @@ class DeepGraphComparator:
             self._get_subgraphs(trusted_children, self._trusted_graph)
 
 
+
     def compare(self) -> None:
         dirty_branches, trusted_branches = self._get_branches()
         print(dirty_branches)
         print(trusted_branches)
+        diffs = BranchComparator(
+            dirty_branches[IOConstructType.BINFILE][0],
+            trusted_branches[IOConstructType.BINFILE][0]
+        ).compare()
 
 
 
