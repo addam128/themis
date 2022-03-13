@@ -46,6 +46,7 @@ def get_argparser():
     return parser
 
 
+
 def trace_entry(config: Config, args):
     
     import os
@@ -61,6 +62,7 @@ def trace_entry(config: Config, args):
     trace(config)
 
 
+
 def transform_entry(config: Config, args):
 
     from themis.transforming.transform import transform, to_img
@@ -72,6 +74,7 @@ def transform_entry(config: Config, args):
 
     if args.img:
         to_img(config, graph)
+
 
 
 def search_entry(config: Config, args):
@@ -101,6 +104,7 @@ def list_entry(config, args):
             print(item)
             
 
+
 def stats_entry(config: Config, args):
 
     from themis.searching.indexing import FileComparator, TrialGraphComparator
@@ -111,6 +115,7 @@ def stats_entry(config: Config, args):
     )
 
 
+
 def compare_entry(config: Config, args):
     
     from themis.comparing.comparator import DeepGraphComparator
@@ -118,8 +123,8 @@ def compare_entry(config: Config, args):
     DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
 
 
-def main():
 
+def main():
 
     parser = get_argparser() 
     args = parser.parse_args()
@@ -129,12 +134,12 @@ def main():
     with open(conf_path, "r") as config_file:
         config = from_toml(Config, config_file.read())
 
-    #try: 
-    args.func(config, args)
+    try: 
+        args.func(config, args)
     
-    #except AttributeError:
-     #   print("Something went wrong ...")
-      #  parser.print_help()
+    except AttributeError:
+        print("Something went wrong ...")
+        parser.print_help()
         
 
         
