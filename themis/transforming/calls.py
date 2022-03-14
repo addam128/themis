@@ -2,6 +2,8 @@ from typing import NamedTuple, Optional, List, Any, Dict, Tuple
 from enum import Enum, auto, IntFlag
 from dataclasses import dataclass, field
 
+from themis.common.errors import InvalidUseException
+
 CLOSERS = [
     "fclose",
     "fcloseall",
@@ -334,7 +336,7 @@ class ArgsComparator:
 
 @dataclass
 class DiffInfo:
-    func_diff: Tuple[str, str, FunctionComparisonResult]
+    func_diff: Tuple[Optional[str], Optional[str], FunctionComparisonResult]
     idx_diff: Tuple[int, int] 
     args_diff: Dict[str, Tuple[ArgStatus, Any, Any]]
 
@@ -352,7 +354,27 @@ class IOCall:
 
 
     @staticmethod
-    def compare(call1: 'IOCall', call2: 'IOCall') -> Tuple[int, DiffInfo]:
+    def compare(call1: Optional['IOCall'], call2: Optional['IOCall']) -> Tuple[int, DiffInfo]:
+
+        if call1 is None and call2 is None:
+            raise InvalidUseException("IOCall comparison with both args being None.")
+
+        if call2 is None:
+            _, args_diff = ArgsComparator.compare(call1.args, dict())
+            return 0, DiffInfo(
+                func_diff=(call1.func.funcname, None, FunctionComparisonResult.DIFFERENT),
+                idx_diff=(call1.index, -1),
+                args_diff=args_diff
+            )
+
+        if call1 is None:
+            _, args_diff = ArgsComparator.compare(dict(), call2.args)
+            return 0, DiffInfo(
+                func_diff=(None, call2.func.funcname, FunctionComparisonResult.DIFFERENT),
+                idx_diff=(-1, call2.index),
+                args_diff=args_diff
+            )
+
         res = 100
 
         # func
@@ -360,7 +382,7 @@ class IOCall:
         if func_match == FunctionComparisonResult.EQUIV_CLASS:
             res -= 15
         elif func_match == FunctionComparisonResult.DIFFERENT:
-            res -= 40
+            res -= 55
         # EQUAL doesn't change the result
 
         # index

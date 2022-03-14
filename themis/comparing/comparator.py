@@ -1,6 +1,6 @@
-import imp
 import networkx as nx
 import itertools
+from numpy import reciprocal
 
 from ortools.linear_solver import pywraplp
 from typing import Union, List, Dict, Iterable, Tuple, NamedTuple, Optional
@@ -19,6 +19,7 @@ NodeID = Union[int, str]
 class NodeMatch(NamedTuple):
     d_node: Optional[NodeID]
     t_node: Optional[NodeID]
+    score: int
     differences: Optional[DiffInfo]
 
 
@@ -67,16 +68,16 @@ class BranchComparator:
         for a1, a2 in itertools.combinations(assignment, 2):
             accumulator += abs(
                 nx.shortest_path_length(
-                    self._branch_d,
-                    source=min(a1[0], a2[0]),
-                    target=max(a1[0], a2[0]),
+                    self._branch_d.to_undirected(reciprocal=False, as_view=True),
+                    source=a1[0],
+                    target=a2[0],
                     weight=None
                 ) 
                 -
                 nx.shortest_path_length(
-                    self._branch_t,
-                    source=min(a1[1], a2[1]),
-                    target=max(a1[1], a2[1]),
+                    self._branch_t.to_undirected(reciprocal=False, as_view=True),
+                    source=a1[1],
+                    target=a2[1],
                     weight=None
                 )
             ) * 2
@@ -105,15 +106,36 @@ class BranchComparator:
         result = list()
 
         for pair in node_assignments:
-            result.append(NodeMatch(d_node=pair[0], t_node=pair[1], differences=diffs[pair]))
+            result.append(
+                NodeMatch(
+                    d_node=pair[0],
+                    t_node=pair[1],
+                    differences=diffs[pair],
+                    score=distances[pair]
+                )
+            )
             nodes_d.remove(pair[0])
             nodes_t.remove(pair[1])
 
         for node in nodes_d:
-            result.append(NodeMatch(d_node=node, t_node=None, differences=None))
+            result.append(
+                NodeMatch(
+                    d_node=node,
+                    t_node=None,
+                    differences=IOCall.compare(self._branch_d.nodes[node]["call"], None),
+                    score=0
+                )
+            )
 
         for node in nodes_t:
-            result.append(NodeMatch(d_node=None, t_node=node, differences=None))
+            result.append(
+                NodeMatch(
+                    d_node=None,
+                    t_node=node,
+                    differences=IOCall.compare(None, self._branch_t.nodes[node]["call"]),
+                    score=0
+                )
+            )
 
         return node_match_avg - structural_penalty, result
 
@@ -134,7 +156,7 @@ class DeepGraphComparator:
 
     @staticmethod
     def _guess_io_type(call: CallsNode) -> IOConstructType:
-        type_hints = []
+        type_hints = list()
         if call.input_fd is not None:
             type_hints.append(call.input_fd.typ)
         if call.output_fd is not None:
@@ -147,13 +169,26 @@ class DeepGraphComparator:
 
 
     @staticmethod
+    def _guess_branch_io_type(indexes: List[NodeID], graph: nx.Graph) -> IOConstructType:
+        guesses = set()
+        for idx in indexes:
+            guesses.add(DeepGraphComparator._guess_io_type(graph.nodes[idx]["call"]))
+
+        io_type = sorted(guesses, reverse=True)[0] if len(guesses) > 0 else IOConstructType.UNKNOWN
+
+        return io_type
+
+
+
+    @staticmethod
     def _get_subgraphs(children: Iterable[NodeID], graph:nx.Graph) -> Dict[IOConstructType, List[nx.Graph]]:
         res = dict()
         for child in children:
-            io_type = DeepGraphComparator._guess_io_type(graph.nodes[child]["call"])
+            indexes = DeepGraphComparator._traverse(child, graph)
+            io_type = DeepGraphComparator._guess_branch_io_type(indexes, graph)
             if res.get(io_type, None) is None:
                 res[io_type] = []
-            res[io_type].append(graph.subgraph(DeepGraphComparator._traverse(child, graph)))
+            res[io_type].append(graph.subgraph(indexes))
         return res
 
 
@@ -180,14 +215,9 @@ class DeepGraphComparator:
 
     def compare(self) -> None:
         dirty_branches, trusted_branches = self._get_branches()
-        #print(dirty_branches)
-        #print(trusted_branches)
-        diffs = BranchComparator(
-            dirty_branches[IOConstructType.BINFILE][0],
-            trusted_branches[IOConstructType.BINFILE][0]
-        ).compare()
 
-        print(diffs)
+        
+
 
         pass # TODO: compare all relevant branches, + solve those which might not be under same IOtype but could match
         # Choose best assignment - ortools again 

@@ -134,6 +134,7 @@ dmypy.json
 
 *.pickle
 *.gexf
+*.png
 .vs/
 
 poetry.lock

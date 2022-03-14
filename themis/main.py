@@ -133,13 +133,8 @@ def main():
 
     with open(conf_path, "r") as config_file:
         config = from_toml(Config, config_file.read())
-
-    try: 
-        args.func(config, args)
-    
-    except AttributeError:
-        print("Something went wrong ...")
-        parser.print_help()
+ 
+    args.func(config, args)
         
 
         
