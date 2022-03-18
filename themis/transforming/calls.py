@@ -301,7 +301,8 @@ class ArgsComparator:
         "retval",
         "dest_addr",
         "n",
-        "fd" 
+        "fd",
+        "addr" 
     ]
 
 
