@@ -1,0 +1,2481 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                2,
+                2
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "4",
+                "4"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                3,
+                3
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "5",
+                "5"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                0,
+                0
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "2",
+                "2"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                1,
+                1
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "3",
+                "3"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                11,
+                11
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0xad",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "11",
+                "11"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                6,
+                6
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/home/seth/.ssh/known_hosts\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x441",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "7",
+                "7"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                31,
+                31
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "29",
+                "29"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                29,
+                29
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/dev/tty\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "27",
+                "27"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                30,
+                30
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "28",
+                "28"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                43,
+                43
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "40",
+                "40"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                36,
+                36
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "33",
+                "33"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                33,
+                33
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/dev/tty\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "30",
+                "30"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                38,
+                38
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "35",
+                "35"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                34,
+                34
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x20",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "31",
+                "31"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                40,
+                40
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "37",
+                "37"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                39,
+                39
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "36",
+                "36"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                41,
+                41
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "38",
+                "38"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                44,
+                44
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "41",
+                "41"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                35,
+                35
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "32",
+                "32"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                37,
+                37
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "34",
+                "34"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                42,
+                42
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "39",
+                "39"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                60,
+                60
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "53",
+                "53"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                77,
+                77
+            ],
+            "score": 100,
+            "args": {
+                "cmd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "70",
+                "70"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup2",
+                "dup2",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                59,
+                59
+            ],
+            "score": 100,
+            "args": {
+                "oldfd": [
+                    "0x8",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "newfd": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "52",
+                "52"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                58,
+                58
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/dev/null\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "51",
+                "51"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fwrite",
+                "fwrite",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                8,
+                8
+            ],
+            "score": 100,
+            "args": {
+                "size": [
+                    "0xa0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "nmemb": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "8",
+                "8"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fclose",
+                "fclose",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                10,
+                10
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "10",
+                "10"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fopen",
+                "fopen",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                7,
+                7
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/home/seth/.ssh/known_hosts\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "mode": [
+                    "\"a\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "6",
+                "6"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fputc",
+                "fputc",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                9,
+                9
+            ],
+            "score": 100,
+            "args": {
+                "c": [
+                    "0xa",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "9",
+                "9"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                53,
+                53
+            ],
+            "score": 100,
+            "args": {
+                "oldfd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "47",
+                "47"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                74,
+                74
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "67",
+                "67"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                12,
+                12
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x4e",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "12",
+                "12"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                56,
+                56
+            ],
+            "score": 100,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "50",
+                "50"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                49,
+                49
+            ],
+            "score": 100,
+            "args": {
+                "oldfd": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "45",
+                "45"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                70,
+                70
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "63",
+                "63"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                54,
+                54
+            ],
+            "score": 100,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "48",
+                "48"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                73,
+                73
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "66",
+                "66"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                55,
+                55
+            ],
+            "score": 100,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "49",
+                "49"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                51,
+                51
+            ],
+            "score": 100,
+            "args": {
+                "oldfd": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "46",
+                "46"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                71,
+                71
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0xfc",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "64",
+                "64"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                24,
+                24
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x44",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "23",
+                "23"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                26,
+                26
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x8c",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "25",
+                "25"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                23,
+                23
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "22",
+                "22"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                67,
+                67
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x54",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "60",
+                "60"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                72,
+                72
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "65",
+                "65"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                46,
+                46
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "43",
+                "43"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                75,
+                75
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x24",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "68",
+                "68"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                68,
+                68
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "61",
+                "61"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "setsockopt",
+                "setsockopt",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                65,
+                65
+            ],
+            "score": 100,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "level": [
+                    "0x6",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optlen": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "58",
+                "58"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                78,
+                78
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "71",
+                "71"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                45,
+                45
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x94",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "42",
+                "42"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                22,
+                22
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2c",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "21",
+                "21"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                61,
+                61
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x70",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "54",
+                "54"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                25,
+                25
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "24",
+                "24"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "getsockopt",
+                "getsockopt",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                64,
+                64
+            ],
+            "score": 98,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "level": [
+                    "0x6",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optlen": [
+                    "0x7fffde789e64",
+                    "0x7ffca95c6a24",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "57",
+                "57"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                27,
+                27
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "26",
+                "26"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                63,
+                63
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "56",
+                "56"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                69,
+                69
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "62",
+                "62"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                62,
+                62
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "55",
+                "55"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "setsockopt",
+                "setsockopt",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                66,
+                66
+            ],
+            "score": 100,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "level": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "optlen": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "59",
+                "59"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                76,
+                76
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x3c",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "69",
+                "69"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                13,
+                13
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x10",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "13",
+                "13"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                19,
+                19
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "18",
+                "18"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                47,
+                47
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "44",
+                "44"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "connect",
+                "connect",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                17,
+                17
+            ],
+            "score": 100,
+            "args": {
+                "sockfd": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "addrlen": [
+                    "0x6e",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "16",
+                "16"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "socket",
+                "socket",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                15,
+                15
+            ],
+            "score": 100,
+            "args": {
+                "domain": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "type": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "protocol": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "14",
+                "14"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                18,
+                18
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "17",
+                "17"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                20,
+                20
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "19",
+                "19"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                21,
+                21
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x54",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "20",
+                "20"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                16,
+                16
+            ],
+            "score": 100,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "15",
+                "15"
+            ]
+        }
+    ],
+    "links": [
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "4",
+                "4"
+            ],
+            "target": [
+                "5",
+                "5"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "2",
+                "2"
+            ],
+            "target": [
+                "3",
+                "3"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "3",
+                "3"
+            ],
+            "target": [
+                "4",
+                "4"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "7",
+                "7"
+            ],
+            "target": [
+                "11",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "27",
+                "27"
+            ],
+            "target": [
+                "28",
+                "28"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "28",
+                "28"
+            ],
+            "target": [
+                "29",
+                "29"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "40",
+                "40"
+            ],
+            "target": [
+                "41",
+                "41"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "33",
+                "33"
+            ],
+            "target": [
+                "34",
+                "34"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "30",
+                "30"
+            ],
+            "target": [
+                "31",
+                "31"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "35",
+                "35"
+            ],
+            "target": [
+                "36",
+                "36"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "31",
+                "31"
+            ],
+            "target": [
+                "32",
+                "32"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "37",
+                "37"
+            ],
+            "target": [
+                "38",
+                "38"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "36",
+                "36"
+            ],
+            "target": [
+                "37",
+                "37"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "38",
+                "38"
+            ],
+            "target": [
+                "39",
+                "39"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "32",
+                "32"
+            ],
+            "target": [
+                "33",
+                "33"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "34",
+                "34"
+            ],
+            "target": [
+                "35",
+                "35"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "39",
+                "39"
+            ],
+            "target": [
+                "40",
+                "40"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "52",
+                "52"
+            ],
+            "target": [
+                "53",
+                "53"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "52",
+                "52"
+            ],
+            "target": [
+                "70",
+                "70"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "51",
+                "51"
+            ],
+            "target": [
+                "52",
+                "52"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "8",
+                "8"
+            ],
+            "target": [
+                "9",
+                "9"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.NEST",
+            "source": [
+                "10",
+                "10"
+            ],
+            "target": [
+                "11",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.NEST",
+            "source": [
+                "6",
+                "6"
+            ],
+            "target": [
+                "7",
+                "7"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "6",
+                "6"
+            ],
+            "target": [
+                "8",
+                "8"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "9",
+                "9"
+            ],
+            "target": [
+                "10",
+                "10"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "47",
+                "47"
+            ],
+            "target": [
+                "50",
+                "50"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "12",
+                "12"
+            ],
+            "target": [
+                "47",
+                "47"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "50",
+                "50"
+            ],
+            "target": [
+                "67",
+                "67"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "45",
+                "45"
+            ],
+            "target": [
+                "48",
+                "48"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "48",
+                "48"
+            ],
+            "target": [
+                "63",
+                "63"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "49",
+                "49"
+            ],
+            "target": [
+                "64",
+                "64"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "46",
+                "46"
+            ],
+            "target": [
+                "49",
+                "49"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "64",
+                "64"
+            ],
+            "target": [
+                "66",
+                "66"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "23",
+                "23"
+            ],
+            "target": [
+                "24",
+                "24"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "25",
+                "25"
+            ],
+            "target": [
+                "26",
+                "26"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "22",
+                "22"
+            ],
+            "target": [
+                "23",
+                "23"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "60",
+                "60"
+            ],
+            "target": [
+                "61",
+                "61"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "65",
+                "65"
+            ],
+            "target": [
+                "68",
+                "68"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "43",
+                "43"
+            ],
+            "target": [
+                "54",
+                "54"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "68",
+                "68"
+            ],
+            "target": [
+                "69",
+                "69"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "61",
+                "61"
+            ],
+            "target": [
+                "62",
+                "62"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "58",
+                "58"
+            ],
+            "target": [
+                "59",
+                "59"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "42",
+                "42"
+            ],
+            "target": [
+                "43",
+                "43"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "21",
+                "21"
+            ],
+            "target": [
+                "22",
+                "22"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "54",
+                "54"
+            ],
+            "target": [
+                "55",
+                "55"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "24",
+                "24"
+            ],
+            "target": [
+                "25",
+                "25"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "57",
+                "57"
+            ],
+            "target": [
+                "58",
+                "58"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "26",
+                "26"
+            ],
+            "target": [
+                "42",
+                "42"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "56",
+                "56"
+            ],
+            "target": [
+                "57",
+                "57"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "62",
+                "62"
+            ],
+            "target": [
+                "65",
+                "65"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "55",
+                "55"
+            ],
+            "target": [
+                "56",
+                "56"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "59",
+                "59"
+            ],
+            "target": [
+                "60",
+                "60"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "69",
+                "69"
+            ],
+            "target": [
+                "71",
+                "71"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "13",
+                "13"
+            ],
+            "target": [
+                "21",
+                "21"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "18",
+                "18"
+            ],
+            "target": [
+                "19",
+                "19"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "16",
+                "16"
+            ],
+            "target": [
+                "17",
+                "17"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "14",
+                "14"
+            ],
+            "target": [
+                "15",
+                "15"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "17",
+                "17"
+            ],
+            "target": [
+                "18",
+                "18"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "19",
+                "19"
+            ],
+            "target": [
+                "20",
+                "20"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "20",
+                "20"
+            ],
+            "target": [
+                "44",
+                "44"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "15",
+                "15"
+            ],
+            "target": [
+                "16",
+                "16"
+            ]
+        }
+    ]
+}

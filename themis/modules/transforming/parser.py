@@ -4,9 +4,9 @@ from typing import Generator, Optional, List, Any, Tuple, Union, Dict
 from dataclasses import dataclass, field
 from uuid import uuid4, UUID
 
-from themis.transforming.calls import STDSTREAM_MANIPULATORS, CallsNode, IODescAndState, IOConstructType,\
+from themis.modules.common.calls import STDSTREAM_MANIPULATORS, CallsNode, IODescAndState, IOConstructType,\
      IODesc, IODescFunc, IODescState, CallsNodeAndFunc, IOCall, GraphFunc, Function
-from themis.transforming.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MANIPULATORS,\
+from themis.modules.common.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MANIPULATORS,\
      STREAM_MANIPULATORS, SOCKET_MANIPULATORS, PIPE_MANIPULATORS, FIFIO_MANIPULATORS,\
           TMP_MANIPULATORS, LINK_MANIPULATORS, DIRECTORY_MANIPULATORS
 
@@ -15,7 +15,11 @@ CALLPOINT_REGEX = re.compile(r"::(?P<type>\w+)<(?P<id>\d+)>")
 
 
 class CallParser:
-    def __init__(self, infile):
+    def __init__(
+        self,
+        infile
+    ) -> None:
+    
         self._lines = infile
         self.call_index = 0
         self._edges: List[Tuple[str, str]] = list()
@@ -40,7 +44,10 @@ class CallParser:
 
 
 
-    def parse(self) -> Generator[CallsNodeAndFunc, Any, Any]:
+    def parse(
+        self
+    ) -> Generator[CallsNodeAndFunc, Any, Any]:
+    
         previous_offset = 2
 
         while True:
@@ -63,12 +70,18 @@ class CallParser:
 
 
 
-    def nesting_edges(self) -> List[Tuple[str, str]]:
+    def nesting_edges(
+        self
+    ) -> List[Tuple[str, str]]:
+    
         return self._edges
 
 
 
-    def _node_from_line(self, line: str) -> Optional[Tuple[int, Union[CallsNode, UUID]]]:  # int is offset
+    def _node_from_line(
+        self,
+        line: str
+    ) -> Optional[Tuple[int, Union[CallsNode, UUID]]]:  # int is offset
 
         mat = CALL_REGEX.match(line)
 
@@ -87,7 +100,13 @@ class CallParser:
 
 
 
-    def _create_node(self, func: str, index: int, args: str, callpoint: Optional[str]) -> Union[CallsNode, UUID]:
+    def _create_node(
+        self,
+        func: str,
+        index: int,
+        args: str,
+        callpoint: Optional[str]
+    ) -> Union[CallsNode, UUID]:
 
         arg_dict = self._parse_args(args)
         in_fd = self._get_in_fd(arg_dict, func)
@@ -120,7 +139,11 @@ class CallParser:
 
 
 
-    def _parse_args(self, args: str) -> Dict[str, Any]:
+    def _parse_args(
+        self,
+        args: str
+    ) -> Dict[str, Any]:
+    
         arg_dict = dict()
         for name, value in map(lambda x: tuple(x.split("=")), args.split(", ")):
             arg_dict[name] = value
@@ -128,7 +151,12 @@ class CallParser:
 
 
 
-    def _get_in_fd(self, args: Dict[str, Any], func: str) -> Optional[IODesc]:
+    def _get_in_fd(
+        self,
+        args: Dict[str, Any],
+        func: str
+    ) -> Optional[IODesc]:
+    
         key = None
         value = None
         for key, value in args.items():
@@ -151,7 +179,12 @@ class CallParser:
 
 
 
-    def _get_out_fd(self, args: Dict[str, Any], func: str) -> Optional[List[IODesc]]:
+    def _get_out_fd(
+        self,
+        args: Dict[str, Any],
+        func: str
+    ) -> Optional[List[IODesc]]:
+    
         key = None
         value = None
         new_iodesc = []
@@ -178,7 +211,10 @@ class CallParser:
 
 
 
-    def _next(self) -> Optional[str]:
+    def _next(
+        self
+    ) -> Optional[str]:
+    
         try:
             return next(self._lines)
         except StopIteration:
@@ -186,7 +222,11 @@ class CallParser:
 
 
 
-    def _postprocess_node(self, node: CallsNode) -> GraphFunc:
+    def _postprocess_node(
+        self,
+        node: CallsNode
+    ) -> GraphFunc:
+    
         ret_func = None
         if node.func.funcname in CLOSERS:
             if node.input_fd.fd is not None:
@@ -229,20 +269,31 @@ class CallParser:
 
 
 
-    def _create_function(self, func: str):
+    def _create_function(
+        self,
+        func: str
+    ) -> Function:
+        
         return Function(funcname=func, effect=IODescFunc.NONE) # TODO: proper effect
 
 
 
 
-def extract_uuid(node: Union[UUID, CallsNode]) -> str:
+def extract_uuid(
+    node: Union[UUID, CallsNode]
+) -> str:
+
     if isinstance(node, CallsNode):
         return str(node.id)
     return str(node)
 
 
 
-def guess_io_type(old_guess: IOConstructType, func: Function):
+def guess_io_type(
+    old_guess: IOConstructType,
+    func: Function
+) -> IOConstructType:
+
     new_guess = IOConstructType.UNKNOWN
 
     if func.funcname in SOCKET_MANIPULATORS:

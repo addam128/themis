@@ -2,7 +2,7 @@ from typing import NamedTuple, Optional, List, Any, Dict, Tuple
 from enum import Enum, auto, IntFlag
 from dataclasses import dataclass, field
 
-from themis.common.errors import InvalidUseException
+from themis.modules.common.errors import InvalidUseException
 
 CLOSERS = [
     "fclose",
@@ -191,7 +191,10 @@ class NodeCounter:
     oid = 1
 
     @classmethod
-    def next(cls) -> int:
+    def next(
+        cls
+    ) -> int:
+    
         res = cls.oid
         cls.oid += 1
         return res
@@ -268,7 +271,12 @@ class FunctionComparator:
 
 
     @classmethod
-    def compare(cls, fname1: str, fname2: str) -> FunctionComparisonResult:
+    def compare(
+        cls,
+        fname1: str,
+        fname2: str
+    ) -> FunctionComparisonResult:
+    
         if fname1 == fname2:
             return FunctionComparisonResult.EQUAL
         for ec in cls.equivalence_classes:
@@ -308,7 +316,12 @@ class ArgsComparator:
 
 
     @classmethod
-    def compare(cls, args1: Dict[str, Any], args2: Dict[str, Any]) -> Tuple[int, Dict[str, Tuple[ArgStatus, Any, Any]]]:
+    def compare(
+        cls,
+        args1: Dict[str, Any],
+        args2: Dict[str, Any]
+    ) -> Tuple[int, Dict[str, Tuple[Any, Any, ArgStatus]]]:
+       
         penalty = 0
         args1_filtered = dict((key, val) for key, val in args1.items() if key not in cls.args_to_exclude)
         args2_filtered = dict((key, val) for key, val in args2.items() if key not in cls.args_to_exclude)
@@ -316,18 +329,18 @@ class ArgsComparator:
 
         for key, val in args1_filtered.items():
             if key not in args2_filtered.keys():
-                differences[key] = (ArgStatus.EXCESSIVE, val, None)
+                differences[key] = (val, None, ArgStatus.EXCESSIVE)
                 penalty += 4
             else:
                 if (val2 := args2_filtered[key]) == val:
-                    differences[key] = (ArgStatus.MATCHING, val, None)
+                    differences[key] = (val, None, ArgStatus.MATCHING)
                 else:
-                    differences[key] = (ArgStatus.VALUE_MISMATCH, val, val2)
+                    differences[key] = (val, val2, ArgStatus.VALUE_MISMATCH)
                     penalty += 2
         
         for key, val in args2_filtered.items():
             if key not in args1_filtered.keys():
-                differences[key] = (ArgStatus.MISSING, None, val)
+                differences[key] = (None, val, ArgStatus.MISSING)
                 penalty += 4
 
         return penalty, differences
@@ -339,7 +352,7 @@ class ArgsComparator:
 class DiffInfo:
     func_diff: Tuple[Optional[str], Optional[str], FunctionComparisonResult]
     idx_diff: Tuple[int, int] 
-    args_diff: Dict[str, Tuple[ArgStatus, Any, Any]]
+    args_diff: Dict[str, Tuple[Any, Any, ArgStatus]]
 
 
 
@@ -355,7 +368,10 @@ class IOCall:
 
 
     @staticmethod
-    def compare(call1: Optional['IOCall'], call2: Optional['IOCall']) -> Tuple[int, DiffInfo]:
+    def compare(
+        call1: Optional['IOCall'],
+        call2: Optional['IOCall']
+    ) -> Tuple[int, DiffInfo]:
 
         if call1 is None and call2 is None:
             raise InvalidUseException("IOCall comparison with both args being None.")
@@ -411,37 +427,56 @@ class CallsNode:
 
 
     @property
-    def index(self) -> int:
+    def index(
+        self
+    ) -> int:
+    
         return self.call.index
 
 
 
     @index.setter
-    def index(self, value: int) -> None:
+    def index(
+        self,
+        value: int
+    ) -> None:
+
         self.call.index = value
 
 
 
     @property
-    def func(self) -> Function:
+    def func(
+        self
+    ) -> Function:
+    
         return self.call.func
 
 
 
     @property
-    def input_fd(self) -> Optional[IODesc]:
+    def input_fd(
+        self
+    ) -> Optional[IODesc]:
+    
         return self.call.in_fd
 
 
 
     @property
-    def output_fd(self) -> Optional[List[IODesc]]:
+    def output_fd(
+        self
+    ) -> Optional[List[IODesc]]:
+    
         return self.call.out_fd
 
 
 
     @property
-    def args(self) -> Dict[str, Any]:
+    def args(
+        self
+    ) -> Dict[str, Any]:
+    
         return self.call.args
 
 

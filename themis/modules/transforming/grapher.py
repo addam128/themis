@@ -3,8 +3,8 @@ import networkx as nx
 from enum import Enum, auto
 from typing import Tuple, List
 
-from themis.transforming.calls import CallsNode, Function, GraphFunc, IOCall, IODescFunc
-from themis.transforming.parser import CallParser
+from themis.modules.common.calls import CallsNode, Function, GraphFunc, IOCall, IODescFunc
+from themis.modules.transforming.parser import CallParser
 
 
 class EdgeType(Enum):
@@ -16,7 +16,11 @@ class EdgeType(Enum):
 
 
 class Grapher:
-    def __init__(self, parser: CallParser) -> None:
+    def __init__(
+        self,
+        parser: CallParser
+    ) -> None:
+    
         self._parser = parser
         self._graph = nx.DiGraph()
         self._i_o_descriptors = dict()  # fd_int : (IODesc, node_id) - node_id points to last event for particular fd
@@ -24,12 +28,17 @@ class Grapher:
 
 
 
-    def _init_graph(self):
+    def _init_graph(
+        self    
+    ) -> None:
+        
         self._graph.add_node("entry", call=CallsNode(call=IOCall(func=Function("entry", IODescFunc.NONE))))
 
 
 
-    def _create_tree(self) -> None:
+    def _create_tree(
+        self
+    ) -> None:
         # NOTE: uncomment the lines if you want the time-structure to be seen as edges (without that it is encoded into node id-s) 
 
         #last_node = "entry"
@@ -57,13 +66,19 @@ class Grapher:
 
 
 
-    def _add_nesting_edges(self) -> None:
+    def _add_nesting_edges(
+        self
+    ) -> None:
+    
         for start, end in self._parser.nesting_edges():
             self._graph.add_edge(start, end, type=EdgeType.NEST)
 
 
 
-    def into_graph(self) -> Tuple[nx.DiGraph, List]:
+    def into_graph(
+        self
+    ) -> Tuple[nx.DiGraph, List]:
+        
         self._create_tree()
         self._add_nesting_edges()
 

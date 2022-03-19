@@ -3,6 +3,7 @@ bin_dir = "/opt/binaries/"
 trace_dir = "./themis/data/"
 trusted_graph_dir = "./themis/graphs/trusted/"
 dirty_graph_dir = "./themis/graphs/dirty/"
+result_dir = "./themis/results/"
 img_dir = "./themis/graphs/img/"
 trust = false
 traced_libcalls_file = "./themis/trace_conf/libc_i_o.txt"

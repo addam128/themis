@@ -12,6 +12,7 @@ class Config:
     trace_dir: str
     trusted_graph_dir: str
     dirty_graph_dir: str
+    result_dir: str
     img_dir: str
     trust: bool
     traced_libcalls_file: str

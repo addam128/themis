@@ -3,12 +3,16 @@ import os
 
 from typing import List
 from deprecated import deprecated
+from psutil import Popen
 
-from themis.common.config import Config
+from themis.modules.common.config import Config
 
 
 class Analyzer:
-    def __init__(self, config: Config) -> None:
+    def __init__(
+        self,
+        config: Config
+    ) -> None:
 
         self.config = config
         self._exec_path = f"{config.bin_dir}/{config.executable}"
@@ -45,7 +49,10 @@ class Analyzer:
 
 
 
-    def _spawn_target(self):
+    def _spawn_target(
+        self
+    ) -> Popen[bytes]:
+    
         changed_env = os.environ.copy()
         changed_env["LD_LIBRARY_PATH"] = f"{self.config.lib_dir}"
         proc = subprocess.Popen(
@@ -56,7 +63,11 @@ class Analyzer:
 
 
 
-    def _attach_trace(self, pid: int, outname: str):
+    def _attach_trace(
+        self,
+        pid: int,
+        outname: str
+    ) -> Popen[bytes]:
         # simply via bash atm, as we dont want to reimplement frida-trace
 
         cmd = ["frida-trace"]
@@ -77,7 +88,9 @@ class Analyzer:
 
 
 
-    def extract_libcalls(self):
+    def extract_libcalls(
+        self
+    ) -> None:
 
         proc = self._spawn_target()
         self._attach_trace(proc.pid, f"{self.config.trace_dir}/libcalls_{self.config.executable}.txt")
@@ -92,7 +105,10 @@ class Analyzer:
 
 
 
-    def _load_function_names(self, filename):
+    def _load_function_names(
+        self,
+        filename
+    ) -> None:
 
         with open(filename, "r") as file:
             for line in file:

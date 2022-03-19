@@ -1,0 +1,3911 @@
+{
+    "directed": true,
+    "multigraph": false,
+    "graph": {},
+    "nodes": [
+        {
+            "id": [
+                "entry",
+                "entry"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                2,
+                2
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "4",
+                "4"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                3,
+                3
+            ],
+            "score": 100,
+            "args": {},
+            "id": [
+                "5",
+                "5"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                0,
+                0
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "2",
+                "2"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                1,
+                1
+            ],
+            "score": 100,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "3",
+                "3"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                6,
+                6
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/home/themis/.ssh/known_hosts\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x441",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "7",
+                "7"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                11,
+                13
+            ],
+            "score": 97,
+            "args": {
+                "count": [
+                    "0xde",
+                    "0xac",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "11",
+                "13"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                20,
+                23
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "19",
+                "22"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                19,
+                22
+            ],
+            "score": 96,
+            "args": {
+                "pathname": [
+                    "\"/dev/tty\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "flags": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "18",
+                "21"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                38,
+                33
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "34",
+                "31"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                37,
+                32
+            ],
+            "score": 94,
+            "args": {
+                "count": [
+                    "0x100",
+                    "0x1",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "33",
+                "30"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "open",
+                "open",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                36,
+                25
+            ],
+            "score": 86,
+            "args": {
+                "pathname": [
+                    "\"/var/tmp/.pipe.sock\"",
+                    "\"/dev/tty\"",
+                    "ArgStatus.VALUE_MISMATCH"
+                ],
+                "flags": [
+                    "0x442",
+                    "0x2",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "32",
+                "23"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                29
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "27"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                31
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "29"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                26
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1c",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "24"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                27
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "25"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                30
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "28"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                28
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "26"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fclose",
+                "fclose",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                9,
+                12
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "9",
+                "12"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fputc",
+                "fputc",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                8,
+                10
+            ],
+            "score": 99,
+            "args": {
+                "c": [
+                    "0xa",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "8",
+                "10"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fopen",
+                "fopen",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                7,
+                7
+            ],
+            "score": 100,
+            "args": {
+                "pathname": [
+                    "\"/home/themis/.ssh/known_hosts\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "mode": [
+                    "\"a\"",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "6",
+                "6"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "pclose",
+                "pclose",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                10,
+                11
+            ],
+            "score": 99,
+            "args": {},
+            "id": [
+                "10",
+                "11"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "fwrite",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                9
+            ],
+            "score": 0,
+            "args": {
+                "size": [
+                    null,
+                    "0xa0",
+                    "ArgStatus.MISSING"
+                ],
+                "nmemb": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "9"
+            ]
+        },
+        {
+            "type": "NodeType.FUNCTION_MISMATCH_STRONG",
+            "func": [
+                "pclose",
+                "fclose",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                10,
+                12
+            ],
+            "score": 44,
+            "args": {},
+            "id": [
+                "10",
+                "12"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                12,
+                15
+            ],
+            "score": 96,
+            "args": {
+                "count": [
+                    "0x4d",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "12",
+                "15"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                50,
+                46
+            ],
+            "score": 96,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "43",
+                "41"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                45,
+                41
+            ],
+            "score": 96,
+            "args": {
+                "oldfd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "38",
+                "36"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                68,
+                64
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "61",
+                "59"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                41,
+                37
+            ],
+            "score": 96,
+            "args": {
+                "oldfd": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "36",
+                "34"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                47,
+                43
+            ],
+            "score": 96,
+            "args": {
+                "cmd": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x800",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "40",
+                "38"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                46,
+                42
+            ],
+            "score": 94,
+            "args": {
+                "cmd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x0",
+                    "0x19",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "39",
+                "37"
+            ]
+        },
+        {
+            "type": "NodeType.MISCELLANEOUS_MISMATCH",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                71,
+                67
+            ],
+            "score": 94,
+            "args": {
+                "cmd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x0",
+                    "0x19",
+                    "ArgStatus.VALUE_MISMATCH"
+                ]
+            },
+            "id": [
+                "64",
+                "62"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                48,
+                44
+            ],
+            "score": 96,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "41",
+                "39"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                59,
+                54
+            ],
+            "score": 96,
+            "args": {
+                "count": [
+                    "0x4000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "52",
+                "49"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "read",
+                "read",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                58,
+                55
+            ],
+            "score": 96,
+            "args": {
+                "count": [
+                    "0x4000",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "51",
+                "50"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                72,
+                68
+            ],
+            "score": 96,
+            "args": {
+                "cmd": [
+                    "0x4",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x0",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "65",
+                "63"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                60,
+                56
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "53",
+                "51"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "fcntl",
+                "fcntl",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                49,
+                45
+            ],
+            "score": 96,
+            "args": {
+                "cmd": [
+                    "0x2",
+                    null,
+                    "ArgStatus.MATCHING"
+                ],
+                "arg": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "42",
+                "40"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "dup",
+                "dup",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                43,
+                39
+            ],
+            "score": 96,
+            "args": {
+                "oldfd": [
+                    "0x1",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "37",
+                "35"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "close",
+                "close",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                67,
+                63
+            ],
+            "score": 96,
+            "args": {},
+            "id": [
+                "60",
+                "58"
+            ]
+        },
+        {
+            "type": "NodeType.MATCHING",
+            "func": [
+                "write",
+                "write",
+                "FunctionComparisonResult.EQUAL"
+            ],
+            "time": [
+                64,
+                60
+            ],
+            "score": 96,
+            "args": {
+                "count": [
+                    "0xee",
+                    null,
+                    "ArgStatus.MATCHING"
+                ]
+            },
+            "id": [
+                "57",
+                "55"
+            ]
+        },
+        {
+            "type": "NodeType.FUNCTION_MISMATCH_STRONG",
+            "func": [
+                "fopen",
+                "munmap",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                34,
+                14
+            ],
+            "score": 14,
+            "args": {
+                "pathname": [
+                    "\"/etc/localtime\"",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "mode": [
+                    "\"rce\"",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "length": [
+                    null,
+                    "0x1000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                "31",
+                "14"
+            ]
+        },
+        {
+            "type": "NodeType.FUNCTION_MISMATCH_STRONG",
+            "func": [
+                "open",
+                "mmap",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                22,
+                8
+            ],
+            "score": 14,
+            "args": {
+                "pathname": [
+                    "\"/dev/tty\"",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "flags": [
+                    "0x2",
+                    "0x22",
+                    "ArgStatus.VALUE_MISMATCH"
+                ],
+                "length": [
+                    null,
+                    "0x1000",
+                    "ArgStatus.MISSING"
+                ],
+                "prot": [
+                    null,
+                    "0x3",
+                    "ArgStatus.MISSING"
+                ],
+                "offset": [
+                    null,
+                    "0x0",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                "20",
+                "8"
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                29,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "27",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                26,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "24",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                23,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1c",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "21",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                25,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "23",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                27,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "25",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "close",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                30,
+                -1
+            ],
+            "score": 0,
+            "args": {},
+            "id": [
+                "28",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                24,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "22",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                28,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "26",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.FUNCTION_MISMATCH_STRONG",
+            "func": [
+                "snprintf",
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                39,
+                35
+            ],
+            "score": 25,
+            "args": {
+                "str": [
+                    "\"\"",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "size": [
+                    "0x20",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "format": [
+                    "\"%d\"",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                "35",
+                "33"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                19
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x3c",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "19"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                18
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "18"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                16
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x10",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "16"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                57
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2c",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "52"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "setsockopt",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                51
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    null,
+                    "0x3",
+                    "ArgStatus.MISSING"
+                ],
+                "level": [
+                    null,
+                    "0x0",
+                    "ArgStatus.MISSING"
+                ],
+                "optname": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ],
+                "optlen": [
+                    null,
+                    "0x4",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "46"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                52
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x54",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "47"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                53
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "48"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                20
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "20"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                66
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x3c",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "61"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                48
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "43"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "setsockopt",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                50
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    null,
+                    "0x3",
+                    "ArgStatus.MISSING"
+                ],
+                "level": [
+                    null,
+                    "0x6",
+                    "ArgStatus.MISSING"
+                ],
+                "optname": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ],
+                "optlen": [
+                    null,
+                    "0x4",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "45"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                65
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x24",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "60"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                61
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "56"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                34
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x54",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "32"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "getsockopt",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                49
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    null,
+                    "0x3",
+                    "ArgStatus.MISSING"
+                ],
+                "level": [
+                    null,
+                    "0x6",
+                    "ArgStatus.MISSING"
+                ],
+                "optname": [
+                    null,
+                    "0x1",
+                    "ArgStatus.MISSING"
+                ],
+                "optlen": [
+                    null,
+                    "0x7ffc07cc7bb4",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "44"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                62
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "57"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "shutdown",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                69
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    null,
+                    "0x3",
+                    "ArgStatus.MISSING"
+                ],
+                "how": [
+                    null,
+                    "0x2",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "64"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                17
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2c",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "17"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "read",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                59
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x2000",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "54"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                47
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x70",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "42"
+            ]
+        },
+        {
+            "type": "NodeType.MISSING",
+            "func": [
+                null,
+                "write",
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                -1,
+                58
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    null,
+                    "0x24",
+                    "ArgStatus.MISSING"
+                ]
+            },
+            "id": [
+                null,
+                "53"
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                16,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x48",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "16",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "getsockopt",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                53,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "level": [
+                    "0x6",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optlen": [
+                    "0x7ffee83c12e4",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "46",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "setsockopt",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                54,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "level": [
+                    "0x6",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optlen": [
+                    "0x4",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "47",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                66,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "59",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "setsockopt",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                55,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "sockfd": [
+                    "0x3",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "level": [
+                    "0x0",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optname": [
+                    "0x1",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ],
+                "optlen": [
+                    "0x4",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "48",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                62,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x28",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "55",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                32,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "30",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                56,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x58",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "49",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                52,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "45",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                63,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "56",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                65,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "58",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                15,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "15",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                51,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x80",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "44",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                69,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x28",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "62",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                13,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x10",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "13",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                57,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "50",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "read",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                17,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x2000",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "17",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                31,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x98",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "29",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                14,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x38",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "14",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                61,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x38",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "54",
+                null
+            ]
+        },
+        {
+            "type": "NodeType.EXCESSIVE",
+            "func": [
+                "write",
+                null,
+                "FunctionComparisonResult.DIFFERENT"
+            ],
+            "time": [
+                70,
+                -1
+            ],
+            "score": 0,
+            "args": {
+                "count": [
+                    "0x48",
+                    null,
+                    "ArgStatus.EXCESSIVE"
+                ]
+            },
+            "id": [
+                "63",
+                null
+            ]
+        }
+    ],
+    "links": [
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "2",
+                "2"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "7",
+                "7"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "11",
+                "13"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "18",
+                "21"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "34",
+                "31"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "32",
+                "23"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "9",
+                "12"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "8",
+                "10"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "6",
+                "6"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "10",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "10",
+                "12"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "12",
+                "15"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "38",
+                "36"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "36",
+                "34"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "39",
+                "37"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "37",
+                "35"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "31",
+                "14"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "20",
+                "8"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "35",
+                "33"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                null,
+                "18"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                null,
+                "20"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                null,
+                "32"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "entry",
+                "entry"
+            ],
+            "target": [
+                "13",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "4",
+                "4"
+            ],
+            "target": [
+                "5",
+                "5"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "2",
+                "2"
+            ],
+            "target": [
+                "3",
+                "3"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "3",
+                "3"
+            ],
+            "target": [
+                "4",
+                "4"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "7",
+                "7"
+            ],
+            "target": [
+                "11",
+                "13"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "7",
+                "7"
+            ],
+            "target": [
+                "10",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "11",
+                "13"
+            ],
+            "target": [
+                "31",
+                "14"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "19",
+                "22"
+            ],
+            "target": [
+                "32",
+                "23"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "18",
+                "21"
+            ],
+            "target": [
+                "19",
+                "22"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "33",
+                "30"
+            ],
+            "target": [
+                "34",
+                "31"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "33",
+                "30"
+            ],
+            "target": [
+                null,
+                "44"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "32",
+                "23"
+            ],
+            "target": [
+                "33",
+                "30"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "32",
+                "23"
+            ],
+            "target": [
+                null,
+                "24"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "27"
+            ],
+            "target": [
+                null,
+                "28"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "29"
+            ],
+            "target": [
+                "33",
+                "30"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "24"
+            ],
+            "target": [
+                null,
+                "25"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "25"
+            ],
+            "target": [
+                null,
+                "26"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "26"
+            ],
+            "target": [
+                null,
+                "27"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.NEST",
+            "source": [
+                "9",
+                "12"
+            ],
+            "target": [
+                "10",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.NEST",
+            "source": [
+                "9",
+                "12"
+            ],
+            "target": [
+                "10",
+                "12"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "9",
+                "12"
+            ],
+            "target": [
+                "40",
+                "38"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "8",
+                "10"
+            ],
+            "target": [
+                "9",
+                "12"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "8",
+                "10"
+            ],
+            "target": [
+                "10",
+                "11"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.NEST",
+            "source": [
+                "6",
+                "6"
+            ],
+            "target": [
+                "7",
+                "7"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "6",
+                "6"
+            ],
+            "target": [
+                "8",
+                "10"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "6",
+                "6"
+            ],
+            "target": [
+                "20",
+                "8"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.NEST",
+            "source": [
+                "10",
+                "11"
+            ],
+            "target": [
+                "11",
+                "13"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "9"
+            ],
+            "target": [
+                "8",
+                "10"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.NEST",
+            "source": [
+                "10",
+                "12"
+            ],
+            "target": [
+                "11",
+                "13"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "10",
+                "12"
+            ],
+            "target": [
+                "40",
+                "38"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "12",
+                "15"
+            ],
+            "target": [
+                "38",
+                "36"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "12",
+                "15"
+            ],
+            "target": [
+                null,
+                "16"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "43",
+                "41"
+            ],
+            "target": [
+                "61",
+                "59"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "43",
+                "41"
+            ],
+            "target": [
+                "53",
+                "51"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "38",
+                "36"
+            ],
+            "target": [
+                "43",
+                "41"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "38",
+                "36"
+            ],
+            "target": [
+                "41",
+                "39"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "38",
+                "36"
+            ],
+            "target": [
+                null,
+                "64"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "61",
+                "59"
+            ],
+            "target": [
+                "64",
+                "62"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "36",
+                "34"
+            ],
+            "target": [
+                "39",
+                "37"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "36",
+                "34"
+            ],
+            "target": [
+                "64",
+                "62"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "40",
+                "38"
+            ],
+            "target": [
+                "41",
+                "39"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "40",
+                "38"
+            ],
+            "target": [
+                null,
+                "43"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "39",
+                "37"
+            ],
+            "target": [
+                "40",
+                "38"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "39",
+                "37"
+            ],
+            "target": [
+                null,
+                "42"
+            ]
+        },
+        {
+            "type": "EdgeType.MATCHING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "64",
+                "62"
+            ],
+            "target": [
+                "65",
+                "63"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "41",
+                "39"
+            ],
+            "target": [
+                "51",
+                "50"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "41",
+                "39"
+            ],
+            "target": [
+                "42",
+                "40"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "52",
+                "49"
+            ],
+            "target": [
+                "51",
+                "50"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "52",
+                "49"
+            ],
+            "target": [
+                "53",
+                "51"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "51",
+                "50"
+            ],
+            "target": [
+                "52",
+                "49"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "51",
+                "50"
+            ],
+            "target": [
+                null,
+                "54"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "53",
+                "51"
+            ],
+            "target": [
+                null,
+                "52"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "42",
+                "40"
+            ],
+            "target": [
+                "43",
+                "41"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "42",
+                "40"
+            ],
+            "target": [
+                "57",
+                "55"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "37",
+                "35"
+            ],
+            "target": [
+                "42",
+                "40"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "60",
+                "58"
+            ],
+            "target": [
+                "61",
+                "59"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "57",
+                "55"
+            ],
+            "target": [
+                "60",
+                "58"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "57",
+                "55"
+            ],
+            "target": [
+                null,
+                "56"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "31",
+                "14"
+            ],
+            "target": [
+                "12",
+                "15"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "20",
+                "8"
+            ],
+            "target": [
+                null,
+                "9"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "20",
+                "8"
+            ],
+            "target": [
+                "21",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "27",
+                null
+            ],
+            "target": [
+                "28",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "24",
+                null
+            ],
+            "target": [
+                "25",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "21",
+                null
+            ],
+            "target": [
+                "22",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "23",
+                null
+            ],
+            "target": [
+                "24",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "25",
+                null
+            ],
+            "target": [
+                "26",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "22",
+                null
+            ],
+            "target": [
+                "23",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "26",
+                null
+            ],
+            "target": [
+                "27",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                "35",
+                "33"
+            ],
+            "target": [
+                "36",
+                "34"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "18"
+            ],
+            "target": [
+                null,
+                "19"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "16"
+            ],
+            "target": [
+                null,
+                "17"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "52"
+            ],
+            "target": [
+                null,
+                "53"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "46"
+            ],
+            "target": [
+                null,
+                "47"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "47"
+            ],
+            "target": [
+                null,
+                "48"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "48"
+            ],
+            "target": [
+                "52",
+                "49"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "20"
+            ],
+            "target": [
+                "18",
+                "21"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "43"
+            ],
+            "target": [
+                null,
+                "61"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "45"
+            ],
+            "target": [
+                null,
+                "46"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "56"
+            ],
+            "target": [
+                "60",
+                "58"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "32"
+            ],
+            "target": [
+                "35",
+                "33"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "44"
+            ],
+            "target": [
+                null,
+                "45"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                null,
+                "57"
+            ],
+            "target": [
+                null,
+                "60"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "17"
+            ],
+            "target": [
+                null,
+                "29"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "54"
+            ],
+            "target": [
+                "57",
+                "55"
+            ]
+        },
+        {
+            "type": "EdgeType.MISSING",
+            "role": "None",
+            "source": [
+                null,
+                "42"
+            ],
+            "target": [
+                null,
+                "57"
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "16",
+                null
+            ],
+            "target": [
+                "17",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "46",
+                null
+            ],
+            "target": [
+                "47",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "47",
+                null
+            ],
+            "target": [
+                "48",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "59",
+                null
+            ],
+            "target": [
+                "62",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "48",
+                null
+            ],
+            "target": [
+                "49",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "55",
+                null
+            ],
+            "target": [
+                "56",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "30",
+                null
+            ],
+            "target": [
+                "44",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "49",
+                null
+            ],
+            "target": [
+                "50",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "45",
+                null
+            ],
+            "target": [
+                "46",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "56",
+                null
+            ],
+            "target": [
+                "58",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "58",
+                null
+            ],
+            "target": [
+                "59",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "15",
+                null
+            ],
+            "target": [
+                "16",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "44",
+                null
+            ],
+            "target": [
+                "45",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "62",
+                null
+            ],
+            "target": [
+                "63",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "13",
+                null
+            ],
+            "target": [
+                "14",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "50",
+                null
+            ],
+            "target": [
+                "54",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "17",
+                null
+            ],
+            "target": [
+                "29",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "29",
+                null
+            ],
+            "target": [
+                "30",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "14",
+                null
+            ],
+            "target": [
+                "15",
+                null
+            ]
+        },
+        {
+            "type": "EdgeType.EXCESSIVE",
+            "role": "EdgeType.FOLLOW",
+            "source": [
+                "54",
+                null
+            ],
+            "target": [
+                "55",
+                null
+            ]
+        }
+    ]
+}

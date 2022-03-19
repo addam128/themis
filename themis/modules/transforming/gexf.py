@@ -37,7 +37,7 @@ from xml.etree.ElementTree import (
     register_namespace,
 )
 
-from themis.transforming.calls import CallsNode, IOCall, IOConstructType
+from themis.modules.common.calls import CallsNode, IOConstructType
 
 
 def write_gexf(G, path, encoding="utf-8", prettyprint=True, version="1.2draft"):
