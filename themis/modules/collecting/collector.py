@@ -1,8 +1,8 @@
 import lddwrap as ldd
-import pyminizip as zip
 import uuid
 
 from pathlib import Path
+from zipfile import ZipFile
 
 from themis.modules.common.config import Config
 
@@ -42,12 +42,7 @@ class Collector:
         self
     ) -> None:
 
-        zip.compress_multiple(
-            self._deps,
-            None,
-            f"{self._config.sample_dir}/{self._name}_{uuid.uuid4()}.zip",
-            b'inf3cted',
-            4,
-            None
-        )
+        with ZipFile(f"{self._config.sample_dir}/{self._name}_{uuid.uuid4()}.zip", mode='x') as zf:
+            for dep in self._deps:
+                zf.write(dep)
     
