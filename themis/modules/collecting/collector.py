@@ -33,6 +33,8 @@ class Collector:
                 )
         )
 
+        return self
+
 
 
 
