@@ -45,7 +45,7 @@ class Collector:
 
         with ZipFile(f"{self._config.sample_dir}/{self._name}_{uuid.uuid4()}.zip", mode='x') as zf:
             for dep in self._deps:
-                if dep is None:
+                if dep is None or dep == "None":
                     continue
                 zf.write(dep)
     
