@@ -5,50 +5,130 @@ from serde.toml import from_toml
 from themis.modules.common.config import Config
 
 
-def get_argparser():
+def get_argparser(
+
+) -> argparse.ArgumentParser:
 
     parser = argparse.ArgumentParser("themis")
-    #parser.add_argument("--module", type=str, choices=["trace", "transform", "compare", "all"], help="functionality to invoke")
+    
     subparsers = parser.add_subparsers(title="actions")
 
-    trace_parser = subparsers.add_parser("trace", description="Trace binaries with the help of Frida (frida.re)")
-    trace_parser.add_argument("executable", help="Name of executable. The path to its directory has to be set in the a config file.")
-    trace_parser.add_argument("--set-ptrace-scope-to-zero", action="store_true", default=False ,help="You might need to set this for frida to work.")
+    trace_parser = subparsers.add_parser(
+        "trace",
+        description="Trace binaries with the help of Frida (frida.re)"
+    )
+    trace_parser.add_argument(
+        "executable",
+        help="Name of executable. The path to its directory has to be set in the a config file."
+    )
+    trace_parser.add_argument(
+        "--set-ptrace-scope-to-zero",
+        action="store_true",
+        default=False,
+        help="You might need to set this for frida to work."
+    )
     trace_parser.set_defaults(func=trace_entry)
     
-    transform_parser = subparsers.add_parser("transform", description="Transform frida-traces into graphs.")
-    transform_parser.add_argument("executable", help="Name of the executable, for which a trace file has already been created.")
-    transform_parser.add_argument("--img", default=False, help="Save graphs as png.", action="store_true")
-    transform_parser.add_argument("--trusted", default=False, action="store_true", help="Indicate whether this binary is trusted")
-    transform_parser.add_argument("--save", default=False, action="store_true", help="Indicate whether this graph should be saved\
-        in pickle and gexf formats. If the flag trusted is also used, it will populate the valid graphs used for comparison.")
+    transform_parser = subparsers.add_parser(
+        "transform",
+        description="Transform frida-traces into graphs."
+    )
+    transform_parser.add_argument(
+        "executable",
+        help="Name of the executable, for which a trace file has already been created."
+    )
+    transform_parser.add_argument(
+        "--img",
+        default=False,
+        help="Save graphs as png.",
+        action="store_true"
+    )
+    transform_parser.add_argument(
+        "--trusted",
+        default=False,
+        action="store_true",
+        help="Indicate whether this binary is trusted"
+    )
+    transform_parser.add_argument(
+        "--save",
+        default=False,
+        action="store_true",
+        help="Indicate whether this graph should be saved\
+            in pickle and gexf formats. If the flag trusted is also used,\
+            it will populate the valid graphs used for comparison."
+        )
     transform_parser.set_defaults(func=transform_entry)
 
-    search_parser = subparsers.add_parser("search", description="Search for most similar trusted binaries.")
-    search_parser.add_argument("executable", help="Name of the executable, for which a graph has been already created,\
-     and closest neighbours should be find.")
-    search_parser.add_argument("-k", default='1', help="Number of neighbours to find. Default is 1.",
-        choices=['1', '2', '3', '4', '5', '6', '7', '8'])
+    search_parser = subparsers.add_parser(
+        "search",
+        description="Search for most similar trusted binaries."
+    )
+    search_parser.add_argument(
+        "executable",
+        help="Name of the executable, for which a graph has been already created,\
+            and closest neighbours should be find.")
+    search_parser.add_argument(
+        "-k",
+        default='1',
+        help="Number of neighbours to find. Default is 1.",
+        choices=['1', '2', '3', '4', '5', '6', '7', '8']
+    )
     search_parser.set_defaults(func=search_entry)
 
-    list_action = subparsers.add_parser("list",help="Show all accumulated trusted binaries.")
+    list_action = subparsers.add_parser(
+        "list",
+        help="Show all accumulated trusted binaries."
+    )
     list_action.set_defaults(func=list_entry)
 
-    compare_action = subparsers.add_parser("compare", description="Compare two graphs in a more fine-grained way, and\
-        receive a combined graph with differences. Due to some heuristics in this module, we suggest to run this module multiple times.")
-    compare_action.add_argument("unknown_exec", help="Name of the executable, for which a graph has been already created,\
-     and is meant to be compared to a valid program.")
-    compare_action.add_argument("trusted_exec", help="Name of the executable, for which a graph has been already created,\
-     the valid program to compare to.")
+    compare_action = subparsers.add_parser(
+        "compare",
+        description="Compare two graphs in a more fine-grained way, and\
+            receive a combined graph with differences. Due to some heuristics \
+            in this module, we suggest to run this module multiple times."
+    )
+    compare_action.add_argument(
+        "unknown_exec",
+        help="Name of the executable, for which a graph has been already created,\
+            and is meant to be compared to a valid program."
+    )
+    compare_action.add_argument(
+        "trusted_exec",
+        help="Name of the executable, for which a graph has been already created,\
+                the valid program to compare to."
+    )
     compare_action.set_defaults(func=compare_entry)
 
-    parser.add_argument("--conf", type=str, default="./themis/config.toml", help="Set different config file.")
+    collect_action = subparsers.add_parser(
+        "collect",
+        description="Collect suspicious binary with all its dependencies"
+    )
+    collect_action.add_argument(
+        "path",
+        help="Path to suspicious binary."
+    )
+    collect_action.add_argument(
+        "--zipname",
+        required=True,
+        type=str,
+        help="Make ZipFile under this name."
+    )
+    collect_action.set_defaults(fun=collect_entry)
+
+    parser.add_argument(
+        "--conf",
+        type=str,
+        default="./themis/config.toml",
+        help="Set different config file.")
     
     return parser
 
 
 
-def trace_entry(config: Config, args):
+def trace_entry(
+    config: Config,
+    args
+) -> None:
     
     import os
     from themis.modules.tracing.tracer import trace
@@ -64,7 +144,10 @@ def trace_entry(config: Config, args):
 
 
 
-def transform_entry(config: Config, args):
+def transform_entry(
+    config: Config,
+    args
+) -> None:
 
     from themis.modules.transforming.transform import transform, to_img
 
@@ -78,7 +161,10 @@ def transform_entry(config: Config, args):
 
 
 
-def search_entry(config: Config, args):
+def search_entry(
+    config: Config,
+    args
+) -> None:
     
     from themis.modules.searching.indexing import IOIntensiveVPTreeWrapper
     
@@ -90,7 +176,10 @@ def search_entry(config: Config, args):
 
 
 
-def list_entry(config, args):
+def list_entry(
+    config: Config,
+    args
+) -> None:
     
     import os
     
@@ -106,7 +195,10 @@ def list_entry(config, args):
             
 
 
-def stats_entry(config: Config, args):
+def stats_entry(
+    config: Config,
+    args
+) -> None:
 
     from themis.modules.searching.indexing import FileComparator, TrialGraphComparator
 
@@ -117,11 +209,25 @@ def stats_entry(config: Config, args):
 
 
 
-def compare_entry(config: Config, args):
+def compare_entry(
+    config: Config,
+    args
+) -> None:
     
     from themis.modules.comparing.graph_comparator import DeepGraphComparator
 
     DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
+
+
+
+def collect_entry(
+    config: Config,
+    args
+) -> None:
+
+    from themis.modules.collecting.collector import Collector
+
+    Collector(config, args.path, args.zipname).collect().archive()
 
 
 

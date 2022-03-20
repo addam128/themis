@@ -21,6 +21,8 @@ vptree = "^1.2"
 # munkres = { git = "https://github.com/jfrelinger/cython-munkres-wrapper.git", branch = "master"}
  # poetry cant build this ATM, the solution is a pending pull request to poetry
 ortools = "^9.3.10459"
+pylddwrap = "^1.2.1"
+pyminizip = "^0.2.6"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
