@@ -13,6 +13,7 @@ def get_argparser(
     
     subparsers = parser.add_subparsers(title="actions")
 
+
     trace_parser = subparsers.add_parser(
         "trace",
         description="Trace binaries with the help of Frida (frida.re)"
@@ -28,7 +29,8 @@ def get_argparser(
         help="You might need to set this for frida to work."
     )
     trace_parser.set_defaults(func=trace_entry)
-    
+
+
     transform_parser = subparsers.add_parser(
         "transform",
         description="Transform frida-traces into graphs."
@@ -59,6 +61,7 @@ def get_argparser(
         )
     transform_parser.set_defaults(func=transform_entry)
 
+
     search_parser = subparsers.add_parser(
         "search",
         description="Search for most similar trusted binaries."
@@ -75,11 +78,13 @@ def get_argparser(
     )
     search_parser.set_defaults(func=search_entry)
 
+
     list_action = subparsers.add_parser(
         "list",
         help="Show all accumulated trusted binaries."
     )
     list_action.set_defaults(func=list_entry)
+
 
     compare_action = subparsers.add_parser(
         "compare",
@@ -99,6 +104,7 @@ def get_argparser(
     )
     compare_action.set_defaults(func=compare_entry)
 
+
     collect_action = subparsers.add_parser(
         "collect",
         description="Collect suspicious binary with all its dependencies"
@@ -113,7 +119,8 @@ def get_argparser(
         type=str,
         help="Make ZipFile under this name."
     )
-    collect_action.set_defaults(fun=collect_entry)
+    collect_action.set_defaults(func=collect_entry)
+
 
     parser.add_argument(
         "--conf",
@@ -241,6 +248,7 @@ def main():
     with open(conf_path, "r") as config_file:
         config = from_toml(Config, config_file.read())
  
+    print(args)
     args.func(config, args)
         
 
