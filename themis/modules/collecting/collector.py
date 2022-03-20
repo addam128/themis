@@ -46,6 +46,8 @@ class Collector:
             self._deps,
             None,
             f"{self._config.sample_dir}/{self._name}_{uuid.uuid4()}.zip",
-            b'inf3cted'
+            b'inf3cted',
+            4,
+            None
         )
     

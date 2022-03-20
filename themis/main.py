@@ -248,7 +248,6 @@ def main():
     with open(conf_path, "r") as config_file:
         config = from_toml(Config, config_file.read())
  
-    print(args)
     args.func(config, args)
         
 
