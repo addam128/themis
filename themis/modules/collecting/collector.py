@@ -32,6 +32,7 @@ class Collector:
                 ldd.list_dependencies(Path(self._path))
                 )
         )
+        print(self._deps)
 
         return self
 
@@ -44,5 +45,7 @@ class Collector:
 
         with ZipFile(f"{self._config.sample_dir}/{self._name}_{uuid.uuid4()}.zip", mode='x') as zf:
             for dep in self._deps:
+                if dep is None:
+                    continue
                 zf.write(dep)
     
