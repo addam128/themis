@@ -2,6 +2,7 @@ import lddwrap as ldd
 import pyminizip as zip
 import uuid
 
+from pathlib import Path
 
 from themis.modules.common.config import Config
 
@@ -25,7 +26,12 @@ class Collector:
         self
     ) -> 'Collector':
 
-        self._deps = list(map(lambda dep: str(dep.path), ldd.list_dependencies(self._path)))
+        self._deps = list(
+            map(
+                lambda dep: str(dep.path),
+                ldd.list_dependencies(Path(self._path))
+                )
+        )
 
 
 
