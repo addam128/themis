@@ -10,7 +10,7 @@ from themis.modules.common.calls import CLOSERS, BINFILE_MANIPULATORS, MEMORY_MA
      STREAM_MANIPULATORS, SOCKET_MANIPULATORS, PIPE_MANIPULATORS, FIFIO_MANIPULATORS,\
           TMP_MANIPULATORS, LINK_MANIPULATORS, DIRECTORY_MANIPULATORS
 
-CALL_REGEX = re.compile(r"(?P<offset>[\|\s]+)(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.\%\:\_]+)\)")
+CALL_REGEX = re.compile(r"(?P<offset>[\|\s]+)(?P<func>\w+)(?P<callpoint>::exit<\d{1,6}>|::enter<\d{1,6}>)?\((?P<args>[\w\s,+\d=/\"\.\%\:\_]*)\)")
 CALLPOINT_REGEX = re.compile(r"::(?P<type>\w+)<(?P<id>\d+)>")
 
 
@@ -28,6 +28,7 @@ class CallParser:
         self._open_iocall_stack = list()
         self._available_internal_fds = dict()
         self._iodesc: Dict[int, IODescAndState] = dict()
+
 
         self._iodesc[0x00] = IODescAndState(
             IODesc(typ=IOConstructType.STDSTREAM, fd=0x00, desc="standard input, inherited"),
@@ -145,8 +146,11 @@ class CallParser:
     ) -> Dict[str, Any]:
     
         arg_dict = dict()
-        for name, value in map(lambda x: tuple(x.split("=")), args.split(", ")):
-            arg_dict[name] = value
+        try:
+            for name, value in map(lambda x: tuple(x.split("=")), args.split(", ")):
+                arg_dict[name] = value
+        except ValueError:
+            pass
         return arg_dict
 
 

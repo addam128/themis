@@ -32,7 +32,6 @@ class Collector:
                 ldd.list_dependencies(Path(self._path))
                 )
         )
-        print(self._deps)
 
         return self
 

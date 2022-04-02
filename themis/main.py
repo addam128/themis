@@ -131,6 +131,17 @@ def get_argparser(
     return parser
 
 
+def prefix():
+    from colorama import Fore, Style
+    print(Fore.CYAN, "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\n", Style.RESET_ALL)
+
+def suffix():
+    from colorama import Fore, Style
+    print(Fore.CYAN, "===============================================\n", Style.RESET_ALL)
+
+def intermediate():
+    from colorama import Fore, Style
+    print(Fore.CYAN, "-----------------------------------------------", Style.RESET_ALL)
 
 def trace_entry(
     config: Config,
@@ -173,14 +184,24 @@ def search_entry(
     args
 ) -> None:
     
+    import colorama
     from themis.modules.searching.indexing import IOIntensiveVPTreeWrapper
+    from pathlib import Path
+    from colorama import Fore, Style
     
+    colorama.init()
+    prefix()
     config.executable = args.executable
 
     index = IOIntensiveVPTreeWrapper(config)
     res = index.query_k_nearest(f"{config.dirty_graph_dir}/{config.executable}.gexf", int(args.k))
-    print(res)
+    print(Fore.GREEN, f'{"Distance": <32}', "Program name", Style.RESET_ALL)
+    intermediate()
+    for dist, file in res:
+        print(Fore.BLUE, f"{dist: <32}", Path(file).name.split(".")[0], Style.RESET_ALL)
+        intermediate()
 
+    suffix()
 
 
 def list_entry(
@@ -221,10 +242,25 @@ def compare_entry(
     args
 ) -> None:
     
+    import colorama
+
     from themis.modules.comparing.graph_comparator import DeepGraphComparator
+    from colorama import Fore, Style
+    
+    colorama.init()
+    prefix()
+    metric, ofile = DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
+    color = None
+    if metric > 95:
+        color = Fore.GREEN
+    elif metric > 65:
+        color = Fore.YELLOW
+    else:
+        color = Fore.RED
 
-    DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
-
+    print("Match Score: ", color, metric, Style.RESET_ALL)
+    print("Difference graph is being serialized to: ", Fore.MAGENTA, ofile, Style.RESET_ALL)
+    suffix()
 
 
 def collect_entry(

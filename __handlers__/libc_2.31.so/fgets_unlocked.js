@@ -20,7 +20,7 @@
    * use "this" which is an object for keeping state local to an invocation.
    */
   onEnter(log, args, state) {
-    log(`fgets_unlocked(s="${args[0].readUtf8String()}", n=${args[1]}, stream=${args[2]})`);
+    log(`fgets_unlocked(s="${args[0]}", n=${args[1]}, stream=${args[2]})`);
   },
 
   /**

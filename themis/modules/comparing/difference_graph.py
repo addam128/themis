@@ -4,8 +4,8 @@ import json
 
 from enum import Enum, auto
 from typing import List, Tuple, Mapping, Any
-from themis.modules.common.calls import ArgStatus, FunctionComparisonResult
 
+from themis.modules.common.calls import ArgStatus, FunctionComparisonResult
 from themis.modules.comparing.primitives import BranchID, NodeMatch
 
 

@@ -188,7 +188,7 @@ class DeepGraphComparator:
 
 
 
-    def _get_node_assignments(
+    def _get_branch_assignments(
         self
     ) -> List[Tuple[BranchID, BranchID, float, List[NodeMatch]]]:
         
@@ -231,15 +231,16 @@ class DeepGraphComparator:
 
     def compare(
         self
-    ) -> None:
+    ) -> Tuple[float, str]:
 
-        assignments = self._get_node_assignments()
+        assignments = self._get_branch_assignments()
         self._sum = sum(filter(lambda x: x is not None, map(lambda x: x[2], assignments)))
-        print(f"Using assignment with branch-similarity-score sum {self._sum}.")
-        print(f"Result is being serialized to: {self._outpath}")
+        #print(f"Using assignment with branch-similarity-score sum {self._sum}.")
+        average = self._sum / len(assignments)
         graph = DiffGraph(self._dirty_graph, self._trusted_graph, assignments).compute()
         graph.serialize(self._outpath)
-        print("Done.")
+
+        return average, self._outpath
 
 
 

@@ -43,6 +43,9 @@ class BranchComparator:
         for pair in distances.keys():
             objective.append(distances[pair] * assignments[pair])
 
+        #for pair_1, pair_2 in itertools.combinations(distances.keys(), 2):
+         #   objective.append(-1 * assignments[pair_1] * self._structural_penalty([pair_1, pair_2]) * assignments[pair_2])
+            # sadly we cant do multiplication on two IntVars, and thus cant combine the structural penalty into the optimization
         solver.Maximize(solver.Sum(objective))
         status = solver.Solve()
         
