@@ -51,7 +51,7 @@ class Analyzer:
 
     def _spawn_target(
         self
-    ) -> Popen[bytes]:
+    ) -> Popen:
     
         changed_env = os.environ.copy()
         changed_env["LD_LIBRARY_PATH"] = f"{self.config.lib_dir}"
@@ -67,7 +67,7 @@ class Analyzer:
         self,
         pid: int,
         outname: str
-    ) -> Popen[bytes]:
+    ) -> Popen:
         # simply via bash atm, as we dont want to reimplement frida-trace
 
         cmd = ["frida-trace"]
