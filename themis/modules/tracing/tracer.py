@@ -18,4 +18,4 @@ def trace(
         f"{config.trace_dir}/libcalls_{config.executable}_filtered.txt"
     )
 
-    system(f"rm {config.data_dir}/libcalls_{config.executable}.txt")
+    system(f"rm {config.trace_dir}/libcalls_{config.executable}.txt")
