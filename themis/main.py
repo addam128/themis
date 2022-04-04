@@ -143,6 +143,9 @@ def intermediate():
     from colorama import Fore, Style
     print(Fore.CYAN, "-----------------------------------------------", Style.RESET_ALL)
 
+
+
+
 def trace_entry(
     config: Config,
     args
@@ -198,7 +201,7 @@ def search_entry(
     print(Fore.GREEN, f'{"Distance": <32}', "Program name", Style.RESET_ALL)
     intermediate()
     for dist, file in res:
-        print(Fore.BLUE, f"{dist: <32}", Path(file).name.split(".")[0], Style.RESET_ALL)
+        print(Fore.BLUE, f"{dist: <32}", Path(file).name[:-5], Style.RESET_ALL)
         intermediate()
 
     suffix()
