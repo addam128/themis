@@ -256,7 +256,7 @@ def compare_entry(
     color = None
     if metric > 95:
         color = Fore.GREEN
-    elif metric > 65:
+    elif metric > 75:
         color = Fore.YELLOW
     else:
         color = Fore.RED
