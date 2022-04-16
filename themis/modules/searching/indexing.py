@@ -75,6 +75,23 @@ class HaussdorfGraphComparator(Comparator[gm.graph.Graph]):
     ) -> float:
         
         ged_compute = gm.HED(1,1,1,1)
+        #res1 = ged_compute.compare([item1, item2], None)
+        res1 = ged_compute.hed(item1, item2)
+        #print(res1)
+        return res1
+
+
+
+
+class BPGraphComparator(Comparator[gm.graph.Graph]):
+    
+    def distance(
+        self,
+        item1: gm.graph.Graph,
+        item2: gm.graph.Graph
+    ) -> float:
+        
+        ged_compute = gm.BP_2(1,1,1,1)
         res1 = ged_compute.compare([item1, item2], None)
         #print(res1)
         return res1
@@ -82,24 +99,23 @@ class HaussdorfGraphComparator(Comparator[gm.graph.Graph]):
 
 
 
-class ExperimentalGraphComparator(Comparator[gm.graph.Graph]):
+class GreedyGraphComparator(Comparator[gm.graph.Graph]):
     
     def distance(
         self,
         item1: gm.graph.Graph,
         item2: gm.graph.Graph
     ) -> float:
-    
-        ged_compute = gm.GraphEditDistance(1,1,1,1)
-        res1 = ged_compute.distance_ged(item1, item2)
-        res2 = ged_compute.distance_ged(item2, item1)
-        #print(abs(res1-res2))
-        return abs(res1-res2)
+        
+        ged_compute = gm.GreedyEditDistance(1,1,1,1)
+        res1 = ged_compute.compare([item1, item2], None)
+        #print(res1)
+        return res1
 
 
 
 
-class TrialGraphComparator(Comparator[gm.graph.Graph]):
+class DebugGraphComparator(Comparator[gm.graph.Graph]):
 
     def distance(
         self,
