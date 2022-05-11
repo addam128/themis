@@ -6,7 +6,6 @@ dirty_graph_dir = "./themis/graphs/dirty/"
 result_dir = "./themis/results/"
 img_dir = "./themis/graphs/img/"
 sample_dir = "./themis/samples/"
-trust = false
 traced_libcalls_file = "./themis/trace_conf/libc_i_o.txt"
 args = [
     "ptolemy@172.16.0.10",

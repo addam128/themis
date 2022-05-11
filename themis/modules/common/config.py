@@ -1,4 +1,4 @@
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from serde import serialize, deserialize
 from typing import List, Optional
 
@@ -15,7 +15,7 @@ class Config:
     result_dir: str
     img_dir: str
     sample_dir: str
-    trust: bool
     traced_libcalls_file: str
     executable: Optional[str]
     args: List[str]
+    trust: bool = field(default=False)

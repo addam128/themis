@@ -44,7 +44,6 @@ dirty_graph_dir = "<path to a folder where graphs of unknown programs should be 
 result_dir = "<path to a folder where resulting difference graphs should be saved, for images it should have a subfolder named 'img'>"
 img_dir = "<path to a folder for saving the transformed graphs as images>"
 sample_dir = "<output folder for the sample collecting module>"
-trust = false # default action is to not take processed programs a strusted
 traced_libcalls_file = "./themis/trace_conf/libc_i_o.txt" # a list of OS API calls to trace
 args = [
     "ptolemy@172.16.0.10",
