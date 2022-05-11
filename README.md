@@ -55,4 +55,6 @@ args = [
 The whole tool is in the subfolder `themis`, where the `modules` folder includes the source code. The other folders are for storing intermediary files, their meaning can be deduced by checking `config.toml`.
 `statistics.py` is just a simple script that was used to create the statistics and images for the thesis.
 
+`__handlers__` includes config files for frida for each traced libcall.
+
 
