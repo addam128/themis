@@ -140,6 +140,7 @@ dmypy.json
 poetry.lock
 .devcontainer
 *.json
+.themis/data/graphs/trusted_partial/
 
 !__handlers__/
 !__handlers__/libc_2.31.so/
