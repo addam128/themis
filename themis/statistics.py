@@ -194,6 +194,7 @@ if __name__ == '__main__':
     #compare_all()
     #visualize_mspace()
 
+    """
     import random
     for v in versions:
         flip = random.randint(0, 100)
@@ -201,23 +202,23 @@ if __name__ == '__main__':
             print(v)
     pass
 
-# >>>
+    # >>>
 
-"""
-ssh-6.1
-ssh-6.3
-ssh-6.7p1
-ssh-6.8
-ssh-6.9
-ssh-7.4
-ssh-7.6
-ssh-ubuntu18.04
-ssh_debian_buster
-ssh-8.1
-ssh-8.3
-ssh-8.4
-ssh-8.7
-ssh-8.8
-ssh_debian_bookworm
-"""       
-            
+
+    ssh-6.1
+    ssh-6.3
+    ssh-6.7p1
+    ssh-6.8
+    ssh-6.9
+    ssh-7.4
+    ssh-7.6
+    ssh-ubuntu18.04
+    ssh_debian_buster
+    ssh-8.1
+    ssh-8.3
+    ssh-8.4
+    ssh-8.7
+    ssh-8.8
+    ssh_debian_bookworm
+    """       
+                
