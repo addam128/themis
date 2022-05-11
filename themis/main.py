@@ -16,7 +16,7 @@ def get_argparser(
 
     trace_parser = subparsers.add_parser(
         "trace",
-        description="Trace binaries with the help of Frida (frida.re)"
+        help="Trace binaries with the help of Frida (frida.re)"
     )
     trace_parser.add_argument(
         "executable",
@@ -33,7 +33,7 @@ def get_argparser(
 
     transform_parser = subparsers.add_parser(
         "transform",
-        description="Transform frida-traces into graphs."
+        help="Transform frida-traces into graphs."
     )
     transform_parser.add_argument(
         "executable",
@@ -64,7 +64,7 @@ def get_argparser(
 
     search_parser = subparsers.add_parser(
         "search",
-        description="Search for most similar trusted binaries."
+        help="Search for most similar trusted binaries."
     )
     search_parser.add_argument(
         "executable",
@@ -88,7 +88,7 @@ def get_argparser(
 
     compare_action = subparsers.add_parser(
         "compare",
-        description="Compare two graphs in a more fine-grained way, and\
+        help="Compare two graphs in a more fine-grained way, and\
             receive a combined graph with differences. Due to some heuristics \
             in this module, we suggest to run this module multiple times."
     )
@@ -113,7 +113,7 @@ def get_argparser(
 
     collect_action = subparsers.add_parser(
         "collect",
-        description="Collect suspicious binary with all its dependencies"
+        help="Collect suspicious binary with all its dependencies"
     )
     collect_action.add_argument(
         "path",

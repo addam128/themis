@@ -1,7 +1,3 @@
-
-
-
-from pyparsing import with_class
 from serde.toml import from_toml
 from themis.modules.common.config import Config
 from themis.modules.comparing.graph_comparator import DeepGraphComparator
