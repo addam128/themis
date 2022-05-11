@@ -68,21 +68,24 @@ class BranchComparator:
         
         accumulator = 0
         for a1, a2 in itertools.combinations(assignment, 2):
-            accumulator += abs(
-                nx.shortest_path_length(
-                    self._branch_d.to_undirected(reciprocal=False, as_view=True),
-                    source=a1[0],
-                    target=a2[0],
-                    weight=None
-                ) 
-                -
-                nx.shortest_path_length(
-                    self._branch_t.to_undirected(reciprocal=False, as_view=True),
-                    source=a1[1],
-                    target=a2[1],
-                    weight=None
-                )
-            ) * 2
+            if None in [a1[0], a1[1], a2[0], a2[1]]:
+                accumulator += len(assignment)
+            else: 
+                accumulator += abs(
+                    nx.shortest_path_length(
+                        self._branch_d.to_undirected(reciprocal=False, as_view=True),
+                        source=a1[0],
+                        target=a2[0],
+                        weight=None
+                    ) 
+                    -
+                    nx.shortest_path_length(
+                        self._branch_t.to_undirected(reciprocal=False, as_view=True),
+                        source=a1[1],
+                        target=a2[1],
+                        weight=None
+                    )
+                ) * 0.001
 
         return accumulator
 
@@ -107,7 +110,6 @@ class BranchComparator:
                     diffs[(node_d, node_t)] = diff
 
             node_match_avg, node_assignments = self._assign(distances)
-            structural_penalty = self._structural_penalty(node_assignments)
 
         #print(f"Node match AVG is {node_match_avg}, assignments are as follows: {node_assignments}\n",
             #f"structural penalty: {structural_penalty}")
@@ -127,15 +129,17 @@ class BranchComparator:
             nodes_d.remove(pair[0])
             nodes_t.remove(pair[1])
 
+
         for node in nodes_d:
             result.append(
                 NodeMatch(
                     d_node=node,
                     t_node=None,
                     differences=IOCall.compare(self._branch_d.nodes[node]["call"], None)[1],
-                    score=0
+                    score=0  # change this if missing should not be 0
                 )
             )
+            node_assignments.append((node, None))
 
         for node in nodes_t:
             result.append(
@@ -143,8 +147,11 @@ class BranchComparator:
                     d_node=None,
                     t_node=node,
                     differences=IOCall.compare(None, self._branch_t.nodes[node]["call"])[1],
-                    score=0
+                    score=0  # change this if excessive should not be 0
                 )
             )
+            node_assignments.append((None, node))
 
-        return node_match_avg - structural_penalty, result
+        structural_penalty = self._structural_penalty(node_assignments)
+        #corrected_avg = sum(map(lambda r: r.score, result)) / len(result) # if changed missing/excessive score, use this formula
+        return node_match_avg, result, structural_penalty

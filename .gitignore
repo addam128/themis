@@ -139,6 +139,7 @@ dmypy.json
 
 poetry.lock
 .devcontainer
+*.json
 
 !__handlers__/
 !__handlers__/libc_2.31.so/

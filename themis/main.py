@@ -102,6 +102,12 @@ def get_argparser(
         help="Name of the executable, for which a graph has been already created,\
                 the valid program to compare to."
     )
+    compare_action.add_argument(
+        "--img",
+        default=False,
+        help="Save difference graphs as png. This is just a really simplified visualization, further work is needed.",
+        action="store_true"
+    )
     compare_action.set_defaults(func=compare_entry)
 
 
@@ -214,7 +220,7 @@ def list_entry(
     
     import os
     
-    with os.scandir(config.graph_dir) as graph_db:
+    with os.scandir(config.trusted_graph_dir) as graph_db:
         for item in  map(
                         lambda entry: os.path.splitext(entry.name)[0],
                         filter(
@@ -252,11 +258,11 @@ def compare_entry(
     
     colorama.init()
     prefix()
-    metric, ofile = DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
+    metric, ofile, graph = DeepGraphComparator(config, args.unknown_exec, args.trusted_exec).compare()
     color = None
-    if metric > 95:
+    if metric >= 90:
         color = Fore.GREEN
-    elif metric > 75:
+    elif metric > 70:
         color = Fore.YELLOW
     else:
         color = Fore.RED
@@ -264,6 +270,9 @@ def compare_entry(
     print("Match Score: ", color, metric, Style.RESET_ALL)
     print("Difference graph is being serialized to: ", Fore.MAGENTA, ofile, Style.RESET_ALL)
     suffix()
+
+    if args.img:
+        graph.show(f"{config.result_dir}/img/{args.unknown_exec}_vs_{args.trusted_exec}.png")
 
 
 def collect_entry(

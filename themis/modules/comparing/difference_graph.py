@@ -1,6 +1,7 @@
 import itertools
 import networkx as nx
 import json
+import matplotlib.pyplot as plt
 
 from enum import Enum, auto
 from typing import List, Tuple, Mapping, Any
@@ -146,6 +147,28 @@ class DiffGraph:
         
         with open(path, "w") as outfile:
             json.dump(data, fp=outfile, indent=4)
+
+
+
+
+    def show(
+        self,
+        path: str
+    ) -> None:
+        
+        labels = dict()
+        for node in self._result_graph.nodes(data="func"):
+            labels[node[0]] = f"{node[1][0]}-{node[1][1]}" if node[1] is not None else "entry"
+        node_colors = []
+        for node in self._result_graph.nodes(data="type"):
+            node_colors.append("green" if node[1] == "NodeType.MATCHING" else "red" if node[1] == "NodeType.EXCESSIVE" or node[1] == "NodeType.MISSING" else "orange" if node[1] == "NodeType.FUNCTION_MISMATCH_STRONG" else "yellow")
+        edge_colors = []
+        for edge in self._result_graph.edges(data="type"):
+            edge_colors.append("green" if edge[2] == "EdgeType.MATCHING" else "grey")
+
+        #nx.draw_spring(graph, labels=labels, node_size=50, edge_color=edge_colors)
+        nx.draw_kamada_kawai(self._result_graph, labels=labels, node_size=50, edge_color=edge_colors, node_color=node_colors, font_size=8)
+        plt.savefig(path)
 
 
 

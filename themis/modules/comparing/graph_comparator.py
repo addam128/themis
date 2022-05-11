@@ -157,9 +157,21 @@ class DeepGraphComparator:
         
         costs = dict()
         differences = dict()
+        structural_penalties_dict = dict(((k1, k2), []) for k1 in branches_d.keys() for k2 in branches_t.keys())
+        structural_penalties_maxes = dict((k1, 1) for k1 in branches_d.keys())
         for id_d, graph_d in branches_d.items():
             for id_t, graph_t in branches_t.items():
-                costs[id_d, id_t], differences[id_d, id_t] = BranchComparator(graph_d, graph_t).compare()
+                costs[id_d, id_t], differences[id_d, id_t], penalty = BranchComparator(graph_d, graph_t).compare()
+                structural_penalties_dict[id_d, id_t] = penalty
+                if structural_penalties_maxes[id_d] < penalty:
+                    structural_penalties_maxes[id_d] = penalty
+
+        #  normalize penalties as it is only used to break ties
+        for k1, k2 in structural_penalties_dict.keys():
+            structural_penalties_dict[k1, k2] /= structural_penalties_maxes[k1]
+
+        for k1, k2 in costs.keys():
+            costs[k1, k2] -= structural_penalties_dict[k1, k2]            
 
         assignments = DeepGraphComparator._assign(costs)
 
@@ -231,7 +243,7 @@ class DeepGraphComparator:
 
     def compare(
         self
-    ) -> Tuple[float, str]:
+    ) -> Tuple[float, str, DiffGraph]:
 
         assignments = self._get_branch_assignments()
         self._sum = sum(filter(lambda x: x is not None, map(lambda x: x[2], assignments)))
@@ -240,7 +252,7 @@ class DeepGraphComparator:
         graph = DiffGraph(self._dirty_graph, self._trusted_graph, assignments).compute()
         graph.serialize(self._outpath)
 
-        return average, self._outpath
+        return average, self._outpath, graph
 
 
 
