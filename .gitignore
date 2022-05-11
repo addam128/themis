@@ -141,6 +141,9 @@ poetry.lock
 .devcontainer
 *.json
 .themis/data/graphs/trusted_partial/
+.themis/data/graphs/trusted_partial/*
+*.png
+*.txt
 
 !__handlers__/
 !__handlers__/libc_2.31.so/
