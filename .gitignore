@@ -140,11 +140,12 @@ dmypy.json
 poetry.lock
 .devcontainer
 *.json
-.themis/data/graphs/trusted_partial/
-.themis/data/graphs/trusted_partial/*
+themis/data/graphs/trusted_partial/
+themis/data/graphs/trusted_partial/*
 *.png
 *.txt
 
+!themis/trace_conf/libc_i_o.txt
 !__handlers__/
 !__handlers__/libc_2.31.so/
 !__handlers__/libpthread_2.31.so/
