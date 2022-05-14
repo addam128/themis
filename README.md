@@ -37,7 +37,7 @@ The default config file can be seen in `themis/config.toml`, the configurable it
 
 ```toml
 lib_dir = "<path to dynamic libraries for the analyzed program, this will be used with LD_LIBRARY_PATH>" 
-bin_dir = "<path to the libraries to be analyzed>"
+bin_dir = "<path to the binaries to be analyzed>"
 trace_dir = "<path to save temporary and permanent trace files to>"
 trusted_graph_dir = "<path to a folder of .gexf and . pickle representation of networkx graphs to be used as the database of legitimate programs>"
 dirty_graph_dir = "<path to a folder where graphs of unknown programs should be saved and fetched from>"
