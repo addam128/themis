@@ -1,5 +1,5 @@
 # themis
-Themis is a suit of tools for analyzing executables with the help of (dis)similarity to legitimate programs, making it useful for analyzing maliciously modified binaries. More about the overall project can be found in my diploma thesis (link to be added).
+Themis is a suit of tools for analyzing executables with the help of (dis)similarity to legitimate programs, making it useful for analyzing maliciously modified binaries. More about the overall project can be found in my diploma [thesis](https://is.muni.cz/th/mbw5j/).
 
 ## Dependencies
 For dependency resolution we use [poetry](https://python-poetry.org), so you will need it for a smoother experience.
